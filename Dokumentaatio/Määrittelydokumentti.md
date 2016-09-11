@@ -5,16 +5,16 @@
 4 kertaa 4 kokoiseen laatikkoon. Näin laatikkoon jää yksi tyhjä kolo pelilaattojen siirtämistä varten. Pelin alussa pelilaatat on sijoitettu pelilaatikkoon
 epäjärjestykseen. Pelaajan tehtävänä on saada pelilaatat siirrettyä takaisin numerojärjestykseen liu'uttamalla palikoita yksi
 kerrallaan viereisestä ruudusta kulloinkin tyhjänä olevaan ruutuun niin, että lopussa tyhjä ruutu on laatikon oikeassa 
-alakulmassa. [1][2] 
+alakulmassa.[1][2] 
 
 ![ratkaistu peli](15-puzzle.png)
 
-Kaiken kaikkiaan pelilaatat voitaisiin asetella pelilaatikkoon 16! = 20 922 789 888 000 tavalla, mutta näistä yli 20 biljoonasta tavasta läheskään kaikki eivät ole pelin mahdollisia alkutilanteita. Woolssey Jonhsson ja Willian E. Story osoittivat vuonna 1879, että vain puolet kaikista mahdollisista pelilaattojen kombinaatioista on sellaisia joista peli voidaan ratkaista. [3]
+Kaiken kaikkiaan pelilaatat voitaisiin asetella pelilaatikkoon 16! = 20 922 789 888 000 tavalla, mutta näistä yli 20 biljoonasta tavasta läheskään kaikki eivät ole pelin mahdollisia alkutilanteita. Woolssey Jonhsson ja Willian E. Story osoittivat vuonna 1879, että vain puolet kaikista mahdollisista pelilaattojen kombinaatioista on sellaisia joista peli voidaan ratkaista.[3]
 
 Työn tavoite
 -------
 
-Työn tavoitteena on toteuttaa 15-pelille ratkaisija, joka pystyy ratkaisemaan pelin mistä tahansa alkutilanteesta, josta peli ylipäätään on ratkaistavissa. On osoitettu, että 15-peli pystytään ratkaisemaan korkeintaan 80 siirrolla, mistä tahansa alkutilanteesta. En tavoittele työssäni juuri optimaallisimman ratkaisun löytämistä, vaan pyrin toteuttamaan algoritmin, joka ratkaisee ongelman järkevässä ajassa.
+Työn tavoitteena on toteuttaa 15-pelille ratkaisija, joka pystyy ratkaisemaan pelin mistä tahansa alkutilanteesta, josta peli ylipäätään on ratkaistavissa. On osoitettu, että 15-peli pystytään ratkaisemaan korkeintaan 80 siirrolla, mistä tahansa alkutilanteesta. En tavoittele työssäni juuri optimaallisimman ratkaisun löytämistä, vaan pyrin toteuttamaan algoritmin, joka ratkaisee ongelman järkevässä ajassa. Optimaallisen ratkaisun löytäminen n-pelille(n*n pelilaatikko) on NP-täydellinen ongelma.[4]
 
 Tarvittavat tietorakenteet
 -------
@@ -37,5 +37,9 @@ Lähteet
 -------
 
 [1] https://en.wikipedia.org/wiki/15_puzzle
+
 [2] https://fi.wikipedia.org/wiki/15-peli
+
 [3] http://www.jstor.org/stable/2369492?origin=crossref&seq=1#page_scan_tab_contents
+
+[4] http://www.aaai.org/Papers/AAAI/1986/AAAI86-027.pdf
