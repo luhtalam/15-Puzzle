@@ -9,4 +9,4 @@ alakulmassa.
 
 ![ratkaistu peli](15-puzzle.png)
 
-Kaiken kaikkiaan pelilaatat voitaisiin asetella pelilaatikkoon 16! = 20 922 789 888 000 tavalla, mutta näistä yli 20 biljoonasta tavasta läheskään kaikki eivät ole pelin mahdollisia alkutilanteita. Woolssey Jonhsson ja Willian E. Story osoittivat vuonna 1897, että vain puolet kaikista mahdollisista pelilaattojen kombinaatioista on sellaisia, joista peli voidaan ratkaista.
+Kaiken kaikkiaan pelilaatat voitaisiin asetella pelilaatikkoon 16! = 20 922 789 888 000 tavalla, mutta näistä yli 20 biljoonasta tavasta läheskään kaikki eivät ole pelin mahdollisia alkutilanteita. Woolssey Jonhsson ja Willian E. Story osoittivat vuonna 1897, että vain puolet kaikista mahdollisista pelilaattojen kombinaatioista on sellaisia joista peli voidaan ratkaista.
