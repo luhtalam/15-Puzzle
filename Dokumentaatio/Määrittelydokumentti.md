@@ -5,11 +5,11 @@
 4 kertaa 4 kokoiseen laatikkoon. Näin laatikkoon jää yksi tyhjä kolo pelilaattojen siirtämistä varten. Pelin alussa pelilaatat on sijoitettu pelilaatikkoon
 epäjärjestykseen. Pelaajan tehtävänä on saada pelilaatat siirrettyä takaisin numerojärjestykseen liu'uttamalla palikoita yksi
 kerrallaan viereisestä ruudusta kulloinkin tyhjänä olevaan ruutuun niin, että lopussa tyhjä ruutu on laatikon oikeassa 
-alakulmassa. 
+alakulmassa. [1][2] 
 
 ![ratkaistu peli](15-puzzle.png)
 
-Kaiken kaikkiaan pelilaatat voitaisiin asetella pelilaatikkoon 16! = 20 922 789 888 000 tavalla, mutta näistä yli 20 biljoonasta tavasta läheskään kaikki eivät ole pelin mahdollisia alkutilanteita. Woolssey Jonhsson ja Willian E. Story osoittivat vuonna 1879, että vain puolet kaikista mahdollisista pelilaattojen kombinaatioista on sellaisia joista peli voidaan ratkaista.
+Kaiken kaikkiaan pelilaatat voitaisiin asetella pelilaatikkoon 16! = 20 922 789 888 000 tavalla, mutta näistä yli 20 biljoonasta tavasta läheskään kaikki eivät ole pelin mahdollisia alkutilanteita. Woolssey Jonhsson ja Willian E. Story osoittivat vuonna 1879, että vain puolet kaikista mahdollisista pelilaattojen kombinaatioista on sellaisia joista peli voidaan ratkaista. [3]
 
 Työn tavoite
 -------
@@ -31,4 +31,11 @@ Toimiakseen algoritmi tarvitsee tiedon nykyisestä pelitilanteesta. Helpoiten t�
 Aika- ja tilavaativuustavoitteet
 -------
 
+Aika- ja tilavaativuudet ovat algoritmissani samat, sillä jokaista uutta pelitilannetta kohti täytyy muistiin luoda uusi peli, jotta siihen voidaan myöhemmin palata. Pahimmillaan sekä aika- että tilavaativuudet ovat luokkaa O(b^n), jossa b on pelipuun keskimääräinen haarautumiskerroin ja n on puun syvyys eli siirtojen määrä, jolla ratkaisu on saavutettu alkutilanteesta. Jotta pahin tapaus realisoituisi, täytyisi jokaisen uuden konstruoidun pelitilanteen olla prioriteetiltaan saman suuruinen kuin edeltäjänsä. Valitsemalla sopiva funktio arvioimaan nykyisen pelitilanteen prioriteettia aika- ja tilavaativuudet toivottavasti kohentuvat. Pyrin optimoimaan algoritmiani mahdollisimman paljon mahdollisuuksien ja kurssin suoritusajan puitteissa.
 
+Lähteet
+-------
+
+[1] https://en.wikipedia.org/wiki/15_puzzle
+[2] https://fi.wikipedia.org/wiki/15-peli
+[3] http://www.jstor.org/stable/2369492?origin=crossref&seq=1#page_scan_tab_contents
