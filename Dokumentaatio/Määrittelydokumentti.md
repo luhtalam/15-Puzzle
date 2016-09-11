@@ -1,4 +1,4 @@
-15-Peli
+15-Peli-ratkaisija
 =======
 
 15-Peli (engl. 15-puzzle tai Boss puzzle) on ongelman ratkaisupeli, jossa 15 numeroitua laattaa on sijoitettuna tavallisimmin
@@ -9,4 +9,12 @@ alakulmassa.
 
 ![ratkaistu peli](15-puzzle.png)
 
-Kaiken kaikkiaan pelilaatat voitaisiin asetella pelilaatikkoon 16! = 20 922 789 888 000 tavalla, mutta näistä yli 20 biljoonasta tavasta läheskään kaikki eivät ole pelin mahdollisia alkutilanteita. Woolssey Jonhsson ja Willian E. Story osoittivat vuonna 1897, että vain puolet kaikista mahdollisista pelilaattojen kombinaatioista on sellaisia joista peli voidaan ratkaista.
+Kaiken kaikkiaan pelilaatat voitaisiin asetella pelilaatikkoon 16! = 20 922 789 888 000 tavalla, mutta näistä yli 20 biljoonasta tavasta läheskään kaikki eivät ole pelin mahdollisia alkutilanteita. Woolssey Jonhsson ja Willian E. Story osoittivat vuonna 1879, että vain puolet kaikista mahdollisista pelilaattojen kombinaatioista on sellaisia joista peli voidaan ratkaista.
+
+Työn tavoite
+-------
+
+Työn tavoitteena on toteuttaa 15-pelille ratkaisija, joka pystyy ratkaisemaan pelin mistä tahansa alkutilanteesta, josta peli ylipäätään on ratkaistavissa. On osoitettu, että 15-peli pystytään ratkaisemaan korkeintaan 80 siirrolla, mistä tahansa alkutilanteesta. En tavoittele työssäni juuri optimaallisimman ratkaisun löytämistä, vaan pyrin toteuttamaan algoritmin, joka ratkaisee ongelman järkevässä ajassa.
+
+Tarvittavat tietorakenteet
+-------
