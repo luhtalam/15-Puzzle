@@ -31,7 +31,7 @@ Toimiakseen algoritmi tarvitsee tiedon nykyisestä pelitilanteesta. Helpoiten t�
 Aika- ja tilavaativuustavoitteet
 -------
 
-Aika- ja tilavaativuudet ovat algoritmissani samat, sillä jokaista uutta pelitilannetta kohti täytyy muistiin luoda uusi peli, jotta siihen voidaan myöhemmin palata. Pahimmillaan sekä aika- että tilavaativuudet ovat luokkaa O(b^n), jossa b on pelipuun keskimääräinen haarautumiskerroin ja n on puun syvyys eli siirtojen määrä, jolla ratkaisu on saavutettu alkutilanteesta. Jotta pahin tapaus realisoituisi, täytyisi jokaisen uuden konstruoidun pelitilanteen olla prioriteetiltaan saman suuruinen kuin edeltäjänsä. Valitsemalla sopiva funktio arvioimaan nykyisen pelitilanteen prioriteettia aika- ja tilavaativuudet toivottavasti kohentuvat. Pyrin optimoimaan algoritmiani mahdollisimman paljon mahdollisuuksien ja kurssin suoritusajan puitteissa.
+Aika- ja tilavaativuudet ovat algoritmissani samat, sillä jokaista uutta pelitilannetta kohti täytyy muistiin luoda uusi peli, jotta siihen voidaan myöhemmin palata. Pahimmillaan sekä aika- että tilavaativuudet ovat luokkaa O(b^n)[6], jossa b on pelipuun keskimääräinen haarautumiskerroin[5] ja n on puun syvyys, jossa ratkaisu on saavutettu alkutilanteesta. Jotta pahin tapaus realisoituisi, täytyisi jokaisen uuden konstruoidun pelitilanteen olla prioriteetiltaan saman suuruinen kuin edeltäjänsä. Algoritmia voi optimoida valitsemalla sopiva funktio arvioimaan nykyisen pelitilanteen prioriteettia. Pyrin optimoimaan ratkaisualgoritmiani mahdollisimman paljon mahdollisuuksien ja kurssin suoritusajan puitteissa.
 
 Lähteet
 -------
@@ -43,3 +43,7 @@ Lähteet
 [3] http://www.jstor.org/stable/2369492?origin=crossref&seq=1#page_scan_tab_contents
 
 [4] http://www.aaai.org/Papers/AAAI/1986/AAAI86-027.pdf
+
+[5] https://en.wikipedia.org/wiki/Branching_factor
+
+[6] https://en.wikipedia.org/wiki/A*_search_algorithm#Complexity
