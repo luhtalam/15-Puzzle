@@ -1,3 +1,6 @@
+
+import java.util.Arrays;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,6 +20,9 @@ public class Logic {
         for (int j = 0; j < table.length; j++) {
             for (int i = 0; i < table[0].length; i++) {
                     numb = table[j][i];
+                    if (numb == 9) {
+                        continue;
+                    }
                     value += Math.abs((long) Math.ceil(numb / 3.0) -j -1);
                     mod = numb % 3;
                     if (mod == 0) {
@@ -41,74 +47,64 @@ public class Logic {
         return value;
     }
     
-    public static int[][] moveBlock(Game game, Direction d) {
-        int[][] t = game.getTable();
-        int j = game.getY();
-        int i = game.getX();
+    public static int[][] moveBlock(int[][] a, int j , int i, Direction d) {
+        int[][] t = new int[3][3];
+        for (int k = 0; k < 3; k++) {
+            t[k] = Arrays.copyOf(a[k], a[k].length);
+        }
         switch (d) {
             case UP: // lisää if-rakenne tarkistamaan voiko siirtää.
                 if (j - i >= 0) {
-                    moveUp(game);
+                    moveUp(t, j, i);
                 }
                 break;
             case RIGHT:
                 if (i + 1 < t[0].length) {
-                    moveRight(game);
+                    moveRight(t, j, i);
                 }
                 break;
             case DOWN:
                 if (j + 1 < t.length) {
-                    moveDown(game);
+                    moveDown(t, j, i);
                 }
                 break;
             case LEFT:
                 if (i - 1 >= 0) {
-                    moveLeft(game);
+                    moveLeft(t, j, i);
                 }
                 break;
         }
         return t;
     }
     
-    private static void moveUp(Game game) {
-        int[][] t = game.getTable();
-        int j = game.getY();
-        int i = game.getX();
+    private static void moveUp(int[][] t, int j, int i) {
         int helper = t[j - 1][i];
         t[j - 1][i] = t[j][i];
         t[j][i] = helper;
-        game.setY(j - 1);
     }
     
-    private static void moveRight(Game game) {
-        int[][] t = game.getTable();
-        int j = game.getY();
-        int i = game.getX();
+    private static void moveRight(int[][] t, int j, int i) {
+
         int helper = t[j][i + 1];
         t[j][i + 1] = t[j][i];
         t[j][i] = helper;
-        game.setX(i + 1);
+
     }
     
-    private static void moveDown(Game game) {
-        int[][] t = game.getTable();
-        int j = game.getY();
-        int i = game.getX();
+    private static void moveDown(int[][] t, int j, int i) {
+
         int helper = t[j + 1][i];
         t[j + 1][i] = t[j][i];
         t[j][i] = helper;
-        game.setY(j + 1);
+
     }
     
-    private static void moveLeft(Game game) {
-        int[][] t = game.getTable();
-        int j = game.getY();
-        int i = game.getX();
+    private static void moveLeft(int[][] t, int j, int i) {
+
         int helper = t[j][i - 1];
         t[j][i - 1] = t[j][i];
         t[j][i] = helper;
-        game.setX(i - 1);
+
     }
 
-    // Lisää metodit moveUp, moveDown....
 }
