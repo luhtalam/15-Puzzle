@@ -10,19 +10,43 @@
  */
 public class GameLogic {
 
-    public static boolean isReady(Game game) {
-        int[][] table = game.getTable();
-        for (int j = 0; j < 4; j++) {
-            for (int i = 0; i < 4; i++) {
-                if (j == 4 && i == 3 && table[j][i] != 0) {
-                    return false;
-                }
-                if (table[j][i] != (j * 4) + i + 1) {
-                    return false;
-                }
+    public static int countValue(int[][] table) {
+        int value = 0;
+        for (int j = 0; j < table.length; j++) {
+            for (int i = 0; i < table[0].length; i++) {
+                
             }
         }
-        return true;
+        return value;
+    }
+    
+    public static int[][] moveBlock(Game game, Direction d) {
+        int[][] t = game.getTable();
+        int j = game.getY();
+        int i = game.getY();
+        int helper;
+        switch(d) {
+            case UP:
+                helper = t[j -1][i];
+                t[j-1][i] = t[j][i];
+                t[j][i] = helper;
+                break;
+            case RIGHT:
+                helper = t[j][i +1];
+                t[j][i+1] = t[j][i];
+                t[j][i] = helper;
+                break;
+            case DOWN:
+                helper = t[j +1][i];
+                t[j+1][i] = t[j][i];
+                t[j][i] = helper;
+                break;
+            case LEFT:
+                helper = t[j][i -1];
+                t[j][i-1] = t[j][i];
+                t[j][i] = helper;
+                break;
+        }
     }
 
 }

@@ -8,15 +8,17 @@
  *
  * @author luhtalam
  */
-public class Game {
+public class Game implements Comparable<Game>{
     private int[][] table;
     private int x; //tyhjän ruudun x-koordinaatti
     private int y; //tyhjän ruudun y-koordinaatti
+    private int value;
     
-    public Game(int x, int y) {
-        this.table = new int[4][4];
+    public Game(int[][] table) {
+        this.table = table;
         this.x = x;
         this.y = y;
+        value = GameLogic.countValue(this.table);
     }
 
     public int[][] getTable() {
@@ -38,4 +40,9 @@ public class Game {
     public void setY(int y) {
         this.y = y;
     }  
+
+    @Override
+    public int compareTo(Game o) {
+        return this.value -o.value;
+    }
 }
