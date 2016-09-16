@@ -10,9 +10,9 @@ import java.util.Arrays;
  *
  * @author luhtalam
  */
-public class Logic {
+public class Logic { 
 
-    public static int countManhattan(int[][] table) {
+    public static int countManhattan(int[][] table) { // Määritä raja milloin painotettu on parempi
         int value = 0;
         int curr;
         int numb;
@@ -31,8 +31,10 @@ public class Logic {
                     mod = n;
                 }
                 curr += Math.abs(mod - i - 1);
-//                value += curr; //optimaallisempi tulos mutta paljon hitaampi
-                value += curr * ((n - i) +(n -j)); //ei anna kovin optimaallista vastausta, mutta n. 4 kertaa nopeampi
+//                value += curr; //optimaallisempi tulos mutta paljon hitaampi, toimii painotettua 
+                                    //paremmin "helpoilla" syötteillä
+                value += curr * ((n - i) +(n -j)); //ei anna kovin optimaallista vastausta, 
+                                                    //mutta ratkaisee "haastavat" tehokkaasti
 
             }
         }
