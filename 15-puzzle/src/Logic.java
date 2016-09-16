@@ -14,20 +14,25 @@ public class Logic {
 
     public static int countManhattan(int[][] table) {
         int value = 0;
+        int curr;
         int numb;
+        int n = table.length;
+        int m = table[0].length;
         int mod;
-        for (int j = 0; j < table.length; j++) {
-            for (int i = 0; i < table[0].length; i++) {
+        for (int j = 0; j < n; j++) {
+            for (int i = 0; i < m; i++) {
                 numb = table[j][i];
-                if (numb == 9) {
+                if (numb == n*n) {
                     continue;
                 }
-                value += Math.abs((long) Math.ceil(numb / 3.0) - j - 1);
-                mod = numb % 3;
+                curr = (int) Math.abs((long) Math.ceil(numb / (double) n) - j - 1);
+                mod = numb %  n;
                 if (mod == 0) {
-                    mod = 3;
+                    mod = n;
                 }
-                value += Math.abs(mod - i - 1);
+                curr += Math.abs(mod - i - 1);
+//                value += curr; //optimaallisempi tulos mutta paljon hitaampi
+                value += curr * ((n - i) +(n -j)); //ei anna kovin optimaallista vastausta, mutta n. 4 kertaa nopeampi
 
             }
         }
@@ -37,27 +42,28 @@ public class Logic {
     public static int countNewManhattan(int[][] t, int old, int j, int i, Direction d) {
         int numb = t[j][i];
         int value, mod;
+        double div = (double) t.length;
         switch (d) {
             case UP:
-                value = old - (int) Math.abs(Math.ceil(numb / 3.0) - (j - 1) - 1);
-                value += (int) Math.abs(Math.ceil(numb / 3.0) - j - 1);
+                value = old - (int) Math.abs(Math.ceil(numb / div) - (j - 1) - 1);
+                value += (int) Math.abs(Math.ceil(numb / div) - j - 1);
                 return value;
             case DOWN:
-                value = old - (int) Math.abs(Math.ceil(numb / 3.0) - (j + 1) - 1);
-                value += (int) Math.abs(Math.ceil(numb / 3.0) - j - 1);
+                value = old - (int) Math.abs(Math.ceil(numb / div) - (j + 1) - 1);
+                value += (int) Math.abs(Math.ceil(numb / div) - j - 1);
                 return value;
             case LEFT:
-                mod = numb % 3;
+                mod = numb % (int)div;
                 if (mod == 0) {
-                    mod = 3;
+                    mod = (int) div;
                 }
                 value = old - Math.abs(mod - (i -1) - 1);
                 value += Math.abs(mod - i - 1);
                 return value;
             case RIGHT:
-                mod = numb % 3;
+                mod = numb % (int) div;
                 if (mod == 0) {
-                    mod = 3;
+                    mod = (int) div;
                 }
                 value = old - Math.abs(mod - (i +1) - 1);
                 value += Math.abs(mod - i - 1);
@@ -79,8 +85,9 @@ public class Logic {
     }
 
     public static int[][] moveBlock(int[][] a, int j, int i, Direction d) {
-        int[][] t = new int[3][3];
-        for (int k = 0; k < 3; k++) {
+        int n = a.length;
+        int[][] t = new int[n][n];
+        for (int k = 0; k < n; k++) {
             t[k] = Arrays.copyOf(a[k], a[k].length);
         }
         switch (d) {
