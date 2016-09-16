@@ -12,15 +12,17 @@ public class Game implements Comparable<Game>{
     private int[][] table;
     private int x; //tyhjän ruudun x-koordinaatti
     private int y; //tyhjän ruudun y-koordinaatti
-    private int value = Integer.MAX_VALUE;
+    private int value;
+    public int Manhattan;
     public Direction d; // suunta josta tilanteeseen on tultu
     public int moves;
     
-    public Game(int[][] table, int x, int y, int value, Direction d, int moves) {
+    public Game(int[][] table, int x, int y,int manhattan, int value, Direction d, int moves) {
         this.table = table;
         this.x = x;
         this.y = y;
         this.d = d;
+        this.Manhattan = manhattan;
         this.value = value;
         this.moves = moves;
     }
