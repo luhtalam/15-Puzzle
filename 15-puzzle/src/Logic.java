@@ -31,9 +31,9 @@ public class Logic {
                     mod = n;
                 }
                 curr += Math.abs(mod - i - 1);
-//                value += curr; //optimaallisempi tulos mutta paljon hitaampi, toimii painotettua 
+                value += curr; //optimaallisempi tulos mutta paljon hitaampi, toimii painotettua 
                                     //paremmin "helpoilla" syötteillä
-                value += curr * ((n - i) +(n -j)); //ei anna kovin optimaallista vastausta, 
+//                value += curr * ((n - i) +(n -j)); //ei anna kovin optimaallista vastausta, 
                                                     //mutta ratkaisee "haastavat" tehokkaasti
 
             }

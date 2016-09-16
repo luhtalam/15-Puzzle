@@ -20,11 +20,11 @@ public class Main {
         int[][] hardest = {{16,12,9,13},{15,11,10,14},{3,7,6,2},{4,8,5,1}};
         int[][] a = {{2, 1, 5, 4}, {11, 6, 3, 7}, {10, 13, 15, 12}, {9, 14, 8, 16}};
         int[][] t = {{6, 4, 7}, {8, 5, 9}, {3, 2, 1}};
-        solve(a, 3, 3);
+        solve(t, 2, 1);
 
     }
 
-    static void solve(int[][] t, int x, int y) {
+    static void solve(int[][] t, int x, int y) { //nopeutuu huomattavasti jos MD:a ei painoteta siirtomäärällä.
         PriorityQueue<Game> q = new PriorityQueue<Game>();
         int value = Logic.countManhattan(t);
         System.out.println("Manhattan: " + value);
@@ -49,21 +49,21 @@ public class Main {
                 a = Logic.moveBlock(g.getTable(), g.getY(), g.getX(), Direction.DOWN);
                 value = Logic.countManhattan(a);
 //                value = Logic.countNewManhattan(a, g.Manhattan, g.getY(), g.getX(), Direction.DOWN);
-                q.add(new Game(a, g.getX(), g.getY() + 1, value, value + g.moves + 1, Direction.DOWN, g.moves + 1));
+                q.add(new Game(a, g.getX(), g.getY() + 1, value, value+ g.moves + 1, Direction.DOWN, g.moves + 1));
                 minV = Math.min(value, minV);
             }
             if (g.getX() - 1 >= 0 && g.d != Direction.RIGHT) {
                 a = Logic.moveBlock(g.getTable(), g.getY(), g.getX(), Direction.LEFT);
                 value = Logic.countManhattan(a);
 //                value = Logic.countNewManhattan(a, g.Manhattan, g.getY(), g.getX(), Direction.LEFT);
-                q.add(new Game(a, g.getX() - 1, g.getY(), value, value + g.moves + 1, Direction.LEFT, g.moves + 1));
+                q.add(new Game(a, g.getX() - 1, g.getY(), value, value+ g.moves + 1, Direction.LEFT, g.moves + 1));
                 minV = Math.min(value, minV);
             }
             if (g.getX() + 1 < n && g.d != Direction.LEFT) {
                 a = Logic.moveBlock(g.getTable(), g.getY(), g.getX(), Direction.RIGHT);
                 value = Logic.countManhattan(a);
 //                value = Logic.countNewManhattan(a, g.Manhattan, g.getY(), g.getX(), Direction.RIGHT);
-                q.add(new Game(a, g.getX() + 1, g.getY(), value, value + g.moves + 1, Direction.RIGHT, g.moves + 1));
+                q.add(new Game(a, g.getX() + 1, g.getY(), value, value+ g.moves + 1, Direction.RIGHT, g.moves + 1));
                 minV = Math.min(value, minV);
             }
             if (minV == 0) {
