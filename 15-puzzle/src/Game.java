@@ -57,8 +57,7 @@ public class Game implements Comparable<Game>{
 
     @Override
     public int compareTo(Game o) {
-        if (this.value > o.value) return 1;
-        if(this.value < o.value) return -1;
-        return 0;
+//        return this.Manhattan - o.Manhattan;
+        return this.value- o.value;
     }
 }
