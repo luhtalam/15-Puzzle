@@ -2,15 +2,16 @@
 import java.util.Arrays;
 
 /**
- *
- * @author luhtalam
+ * Luokka peliin liittyvää laskentaa ja siirtelyä varten. Eriytetään kadeksi
+ * luokaksi Movement ja Counter myöhemmin.
  */
-public class Logic { 
+public class Logic {
 
     /**
+     * Konstruktori
      *
-     * @param table
-     * @return
+     * @param table pelilauta, josta MD-lasketaan
+     * @return pelitilanteen MD-arvo
      */
     public static int countManhattan(int[][] table) { // Määritä raja milloin painotettu on parempi
         int value = 0;
@@ -22,20 +23,20 @@ public class Logic {
         for (int j = 0; j < n; j++) {
             for (int i = 0; i < m; i++) {
                 numb = table[j][i];
-                if (numb == n*n) {
+                if (numb == n * n) {
                     continue;
                 }
                 curr = (int) Math.abs((long) Math.ceil(numb / (double) n) - j - 1);
-                mod = numb %  n;
+                mod = numb % n;
                 if (mod == 0) {
                     mod = n;
                 }
                 curr += Math.abs(mod - i - 1);
 //                value += 2 * curr; //optimaallisempi tulos mutta paljon hitaampi, toimii painotettua 
-                                    //paremmin "helpoilla" syötteillä, 2 kertominen nopeuttaa suunnattomasti
-                                    //ja tarjoaa optimaalisen tulosen - 1.2*optimi
-                value += curr * ((n - i) +(n -j)); //ei anna kovin optimaallista vastausta, 
-                                                    //mutta ratkaisee nopeasti
+                //paremmin "helpoilla" syötteillä, 2 kertominen nopeuttaa suunnattomasti
+                //ja tarjoaa optimaalisen tulosen - 1.2*optimi
+                value += curr * ((n - i) + (n - j)); //ei anna kovin optimaallista vastausta, 
+                //mutta ratkaisee nopeasti
 
             }
         }
@@ -43,13 +44,15 @@ public class Logic {
     }
 
     /**
+     * Laskee uuden MD-arvon optimaallisemmin. Kyseessä klassinen painottamaton
+     * MD-arvo.
      *
-     * @param t
-     * @param old
-     * @param j
-     * @param i
-     * @param d
-     * @return
+     * @param t pelitilanne
+     * @param old vanha MD-arvo
+     * @param j tyhjän ruudun y-koordinaatti
+     * @param i tyhjän ruudun x-koordinaatti
+     * @param d tyhjän ruudun siirtosuunta
+     * @return uusi MD-arvo
      */
     public static int countNewManhattan(int[][] t, int old, int j, int i, Direction d) {
         int numb = t[j][i];
@@ -65,11 +68,11 @@ public class Logic {
                 value += (int) Math.abs(Math.ceil(numb / div) - j - 1);
                 return value;
             case LEFT:
-                mod = numb % (int)div;
+                mod = numb % (int) div;
                 if (mod == 0) {
                     mod = (int) div;
                 }
-                value = old - Math.abs(mod - (i -1) - 1);
+                value = old - Math.abs(mod - (i - 1) - 1);
                 value += Math.abs(mod - i - 1);
                 return value;
             case RIGHT:
@@ -77,7 +80,7 @@ public class Logic {
                 if (mod == 0) {
                     mod = (int) div;
                 }
-                value = old - Math.abs(mod - (i +1) - 1);
+                value = old - Math.abs(mod - (i + 1) - 1);
                 value += Math.abs(mod - i - 1);
                 return value;
         }
@@ -85,29 +88,13 @@ public class Logic {
     }
 
     /**
+     * Konstruoi uuden pelilaudan aj siirtää tyhjää ruutua.
      *
-     * @param table
-     * @return
-     */
-    public static int countMisplacedTiles(int[][] table) {
-        int value = 0;
-        for (int j = 0; j < table.length; j++) {
-            for (int i = 0; i < table[0].length; i++) {
-                if (table[j][i] != j * 3 + i + 1) {
-                    value++;
-                }
-            }
-        }
-        return value;
-    }
-
-    /**
-     *
-     * @param a
-     * @param j
-     * @param i
-     * @param d
-     * @return
+     * @param a pelilauta
+     * @param j tyhjän ruudun y-koordinaatti
+     * @param i tyhjän ruudun x-koordinaatti
+     * @param d siirtosuunta
+     * @return uusi pelilauta, jossa tyhjää ruutua on siirretty
      */
     public static int[][] moveBlock(int[][] a, int j, int i, Direction d) {
         int n = a.length;

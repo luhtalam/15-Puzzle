@@ -1,45 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- *
- * @author luhtalam
+ *Luokka pelitilanteiden ylläpitoa varten. Peli-luokka pitää yllä tietoa nykyisen
+ * pelilaudan palikoiden järjestyksestä, tyhjän ruuden sijainnista ja pelitilanteen
+ * arvosta.
  */
-public class Game implements Comparable<Game>{
-    private int[][] table;
+public class Game implements Comparable<Game> {
+
+    private int[][] table; //peliruudukko
     private int x; //tyhjän ruudun x-koordinaatti
     private int y; //tyhjän ruudun y-koordinaatti
-    private int value;
+    private int value; //pelitilanteen arvo
 
     /**
-     *
+     * Manhattan distancen -arvo.
      */
     public int Manhattan;
 
     /**
-     *
+     * Viimeisin tyhjän ruudun suunta.
      */
     public Direction d; // suunta josta tilanteeseen on tultu
 
     /**
-     *
+     * Siirtojen lukumäärä, jolla kyseiseen pelitilanteeseen on tultu.
      */
     public int moves;
-    
+
     /**
-     *
-     * @param table
-     * @param x
-     * @param y
-     * @param manhattan
-     * @param value
-     * @param d
-     * @param moves
+     *Konstruktori
+     * @param table Peliruudukko
+     * @param x Tyhjän ruudun x-koordinaatti
+     * @param y Tyhjän ruudun y-koordinaatti
+     * @param manhattan Manhattan distancen arvo
+     * @param value Pelitilanteen arvo
+     * @param d Suunta, johon tyhjää on siirretty viimeksi.
+     * @param moves Siirtojen lukumäärä
      */
-    public Game(int[][] table, int x, int y,int manhattan, int value, Direction d, int moves) {
+    public Game(int[][] table, int x, int y, int manhattan, int value, Direction d, int moves) {
         this.table = table;
         this.x = x;
         this.y = y;
@@ -56,7 +53,7 @@ public class Game implements Comparable<Game>{
     public int[][] getTable() {
         return table;
     }
-    
+
     /**
      *
      * @param t
@@ -64,7 +61,7 @@ public class Game implements Comparable<Game>{
     public void setTable(int[][] t) {
         this.table = t;
     }
-    
+
     /**
      *
      * @return
@@ -96,7 +93,7 @@ public class Game implements Comparable<Game>{
     public void setX(int x) {
         this.x = x;
     }
-    
+
     /**
      *
      * @param value
@@ -111,11 +108,11 @@ public class Game implements Comparable<Game>{
      */
     public void setY(int y) {
         this.y = y;
-    }  
+    }
 
     @Override
     public int compareTo(Game o) {
 //        return this.Manhattan - o.Manhattan;
-        return this.value- o.value;
+        return this.value - o.value;
     }
 }

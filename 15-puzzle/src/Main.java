@@ -2,14 +2,9 @@
 import java.util.PriorityQueue;
 import java.util.Random;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author luhtalam
+ * Main luokka, pelitilanteen syöttämistä ja ratkaisemista varten. Vielä kesken
+ * ja sisältää metodeja, joita pitää eriyttää omiin luokkiin.
  */
 public class Main {
 
@@ -31,6 +26,9 @@ public class Main {
 
     }
 
+    /**
+     * Sisältää silmukan pelintilanteen ratkaisemiseksi.
+     */
     static void solve(int[][] t, int x, int y) {
         PriorityQueue<Game> q = new PriorityQueue<Game>();
         int value = Logic.countManhattan(t);
@@ -43,7 +41,7 @@ public class Main {
         long start = System.currentTimeMillis();
         while (true) {
             Game g = q.poll();
-            
+
             if (g.getValue() - g.moves == 0) {
                 System.out.println("ratkaisu löytyi");
                 System.out.println("nostoja keosta: " + i);
@@ -52,7 +50,7 @@ public class Main {
                 print(g.getTable());
                 break;
             }
-            
+
             if (g.getY() - 1 >= 0 && g.d != Direction.DOWN) {
                 a = Logic.moveBlock(g.getTable(), g.getY(), g.getX(), Direction.UP);
                 value = Logic.countManhattan(a);
@@ -77,13 +75,15 @@ public class Main {
 //                value = Logic.countNewManhattan(a, g.Manhattan, g.getY(), g.getX(), Direction.RIGHT);
                 q.add(new Game(a, g.getX() + 1, g.getY(), value, value + g.moves + 1, Direction.RIGHT, g.moves + 1));
             }
-            
 
             i++;
 
         }
     }
 
+    /*
+    *Alustaa satunnaisen pelin alkutilanteen.
+     */
     static Game initGame(Game g) {
         Direction[] values = Direction.values();
         Random random = new Random();
@@ -129,6 +129,9 @@ public class Main {
         return g;
     }
 
+    /*
+    *Tulostaa pelilaudan.
+     */
     static void print(int[][] t) {
         for (int j = 0; j < t.length; j++) {
             for (int i = 0; i < t[0].length; i++) {
