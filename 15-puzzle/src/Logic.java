@@ -31,11 +31,11 @@ public class Logic {
                     mod = n;
                 }
                 curr += Math.abs(mod - i - 1);
-                value += 2 * curr; //optimaallisempi tulos mutta paljon hitaampi, toimii painotettua 
+//                value += 2 * curr; //optimaallisempi tulos mutta paljon hitaampi, toimii painotettua 
                                     //paremmin "helpoilla" syötteillä, 2 kertominen nopeuttaa suunnattomasti
                                     //ja tarjoaa optimaalisen tulosen - 1.2*optimi
-//                value += curr * ((n - i) +(n -j)); //ei anna kovin optimaallista vastausta, 
-                                                    //mutta ratkaisee "haastavat" tehokkaasti
+                value += curr * ((n - i) +(n -j)); //ei anna kovin optimaallista vastausta, 
+                                                    //mutta ratkaisee nopeasti
 
             }
         }
