@@ -1,17 +1,17 @@
 
 import java.util.Arrays;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author luhtalam
  */
 public class Logic { 
 
+    /**
+     *
+     * @param table
+     * @return
+     */
     public static int countManhattan(int[][] table) { // Määritä raja milloin painotettu on parempi
         int value = 0;
         int curr;
@@ -42,6 +42,15 @@ public class Logic {
         return value;
     }
 
+    /**
+     *
+     * @param t
+     * @param old
+     * @param j
+     * @param i
+     * @param d
+     * @return
+     */
     public static int countNewManhattan(int[][] t, int old, int j, int i, Direction d) {
         int numb = t[j][i];
         int value, mod;
@@ -75,6 +84,11 @@ public class Logic {
         return 0;
     }
 
+    /**
+     *
+     * @param table
+     * @return
+     */
     public static int countMisplacedTiles(int[][] table) {
         int value = 0;
         for (int j = 0; j < table.length; j++) {
@@ -87,6 +101,14 @@ public class Logic {
         return value;
     }
 
+    /**
+     *
+     * @param a
+     * @param j
+     * @param i
+     * @param d
+     * @return
+     */
     public static int[][] moveBlock(int[][] a, int j, int i, Direction d) {
         int n = a.length;
         int[][] t = new int[n][n];

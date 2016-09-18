@@ -8,5 +8,24 @@
  *Enum-luokka Direction määrittelee pelin tyhjän palan siirtosuunnan.  
  */
 public enum Direction {
-    LEFT, RIGHT, UP, DOWN;
+
+    /**
+     *
+     */
+    LEFT,
+
+    /**
+     *
+     */
+    RIGHT,
+
+    /**
+     *
+     */
+    UP,
+
+    /**
+     *
+     */
+    DOWN;
 }
