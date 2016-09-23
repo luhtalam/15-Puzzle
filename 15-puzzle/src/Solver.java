@@ -6,16 +6,19 @@ import java.util.PriorityQueue;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author luhtalam
  */
 public class Solver {
-    
-    
+
+    private PriorityQueue<Game> q;
+
+    public Solver() {
+        this.q = new PriorityQueue<Game>();
+    }
+
     public void solve(Game game) {
-        PriorityQueue<Game> q = new PriorityQueue<Game>();
         int value = game.getValue();
         System.out.println("Manhattan: " + value);
         q.add(game);
@@ -25,44 +28,55 @@ public class Solver {
         int numb;
         long start = System.currentTimeMillis();
         while (true) {
-            Game g = q.poll();
+            game = q.poll();
 
-            if (g.getValue() - g.moves == 0) {
+            if (game.getValue() - game.moves == 0) {
                 System.out.println("ratkaisu löytyi");
                 System.out.println("nostoja keosta: " + i);
-                System.out.println("siirtoja: " + g.moves);
+                System.out.println("siirtoja: " + game.moves);
                 System.out.println("Käytetty aika: " + (System.currentTimeMillis() - start) + " ms");
-                print(g.getTable());
+                print(game.getTable());
                 break;
             }
 
-            if (g.getY() - 1 >= 0 && g.d != Direction.DOWN) {
-                a = Logic.moveBlock(g.getTable(), g.getY(), g.getX(), Direction.UP);
-                value = Logic.countManhattan(a);
-                q.add(new Game(a, g.getX(), g.getY() - 1, value + g.moves + 1, Direction.UP, g.moves + 1));
+            if (game.getY() - 1 >= 0 && game.getDirection() != Direction.DOWN) {
+                addNewGame(game, Direction.UP);
             }
-            if (g.getY() + 1 < n && g.d != Direction.UP) {
-                a = Logic.moveBlock(g.getTable(), g.getY(), g.getX(), Direction.DOWN);
-                value = Logic.countManhattan(a);
-                q.add(new Game(a, g.getX(), g.getY() + 1, value + g.moves + 1, Direction.DOWN, g.moves + 1));
+            if (game.getY() + 1 < n && game.getDirection() != Direction.UP) {
+                addNewGame(game, Direction.DOWN);
             }
-            if (g.getX() - 1 >= 0 && g.d != Direction.RIGHT) {
-                a = Logic.moveBlock(g.getTable(), g.getY(), g.getX(), Direction.LEFT);
-                value = Logic.countManhattan(a);
-                q.add(new Game(a, g.getX() - 1, g.getY(), value + g.moves + 1, Direction.LEFT, g.moves + 1));
+            if (game.getX() - 1 >= 0 && game.getDirection() != Direction.RIGHT) {
+                addNewGame(game, Direction.LEFT);
             }
-            if (g.getX() + 1 < n && g.d != Direction.LEFT) {
-                a = Logic.moveBlock(g.getTable(), g.getY(), g.getX(), Direction.RIGHT);
-                value = Logic.countManhattan(a);
-                q.add(new Game(a, g.getX() + 1, g.getY(), value + g.moves + 1, Direction.RIGHT, g.moves + 1));
+            if (game.getX() + 1 < n && game.getDirection() != Direction.LEFT) {
+                addNewGame(game, Direction.RIGHT);
             }
 
             i++;
 
         }
     }
-    
-     public void print(int[][] t) {
+
+    private void addNewGame(Game game, Direction d) {
+        int[][] table = Logic.moveBlock(game.getTable(), game.getY(), game.getX(), d);
+        int MD = Logic.countManhattan(table);
+        switch (d) {
+            case UP:
+                q.add(new Game(table, game.getX(), game.getY() - 1, MD + game.moves + 1, Direction.UP, game.moves + 1));
+                break;
+            case DOWN:
+                q.add(new Game(table, game.getX(), game.getY() + 1, MD + game.moves + 1, Direction.DOWN, game.moves + 1));
+                break;
+            case LEFT:
+                q.add(new Game(table, game.getX() - 1, game.getY(), MD + game.moves + 1, Direction.LEFT, game.moves + 1));
+                break;
+            case RIGHT:
+                q.add(new Game(table, game.getX() + 1, game.getY(), MD + game.moves + 1, Direction.RIGHT, game.moves + 1));
+                break;
+        }
+    }
+
+    public void print(int[][] t) {
         for (int j = 0; j < t.length; j++) {
             for (int i = 0; i < t[0].length; i++) {
                 System.out.printf("%2d ", t[j][i]);

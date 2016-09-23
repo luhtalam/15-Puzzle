@@ -12,11 +12,7 @@ public class Game implements Comparable<Game> {
     private int x; //tyhjän ruudun x-koordinaatti
     private int y; //tyhjän ruudun y-koordinaatti
     private int value; //pelitilanteen arvo
-
-    /**
-     * Viimeisin tyhjän ruudun suunta.
-     */
-    public Direction d; // suunta josta tilanteeseen on tultu
+    private Direction d; // suunta josta tilanteeseen on tultu
 
     /**
      * Siirtojen lukumäärä, jolla kyseiseen pelitilanteeseen on tultu.
@@ -29,8 +25,7 @@ public class Game implements Comparable<Game> {
      * @param table Peliruudukko
      * @param x Tyhjän ruudun x-koordinaatti
      * @param y Tyhjän ruudun y-koordinaatti
-     * @param manhattan Manhattan distancen arvo
-     * @param value Pelitilanteen arvo
+     * @param value Pelitilanteen arvo (MD + moves so far)
      * @param d Suunta, johon tyhjää on siirretty viimeksi.
      * @param moves Siirtojen lukumäärä
      */
@@ -131,14 +126,6 @@ public class Game implements Comparable<Game> {
 
     /**
      *
-     * @param t
-     */
-    public void setTable(int[][] t) {
-        this.table = t;
-    }
-
-    /**
-     *
      * @return
      */
     public int getValue() {
@@ -160,21 +147,9 @@ public class Game implements Comparable<Game> {
     public int getY() {
         return y;
     }
-
-    /**
-     *
-     * @param x
-     */
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    /**
-     *
-     * @param value
-     */
-    public void setValue(int value) {
-        this.value = value;
+    
+    public Direction getDirection() {
+        return this.d;
     }
 
     /**
