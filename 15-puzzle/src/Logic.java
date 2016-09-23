@@ -8,7 +8,8 @@ import java.util.Arrays;
 public class Logic {
 
     /**
-     * Konstruktori
+     * Staattinen metodi Manhattan Distancen laskentaan. Tässä tapauksessa
+     * painotettu sellainen
      *
      * @param table pelilauta, josta MD-lasketaan
      * @return pelitilanteen MD-arvo
@@ -32,10 +33,10 @@ public class Logic {
                     mod = n;
                 }
                 curr += Math.abs(mod - i - 1);
-//                value += 2 * curr; //optimaallisempi tulos mutta paljon hitaampi, toimii painotettua 
+                value += 2 * curr; //optimaallisempi tulos mutta paljon hitaampi, toimii painotettua 
                 //paremmin "helpoilla" syötteillä, 2 kertominen nopeuttaa suunnattomasti
                 //ja tarjoaa optimaalisen tulosen - 1.2*optimi
-                value += curr * ((n - i) + (n - j)); //ei anna kovin optimaallista vastausta, 
+//                value += curr * ((n - i) + (n - j)); //ei anna kovin optimaallista vastausta, 
                 //mutta ratkaisee nopeasti
 
             }
@@ -44,51 +45,7 @@ public class Logic {
     }
 
     /**
-     * Laskee uuden MD-arvon optimaallisemmin. Kyseessä klassinen painottamaton
-     * MD-arvo.
-     *
-     * @param t pelitilanne
-     * @param old vanha MD-arvo
-     * @param j tyhjän ruudun y-koordinaatti
-     * @param i tyhjän ruudun x-koordinaatti
-     * @param d tyhjän ruudun siirtosuunta
-     * @return uusi MD-arvo
-     */
-    public static int countNewManhattan(int[][] t, int old, int j, int i, Direction d) {
-        int numb = t[j][i];
-        int value, mod;
-        double div = (double) t.length;
-        switch (d) {
-            case UP:
-                value = old - (int) Math.abs(Math.ceil(numb / div) - (j - 1) - 1);
-                value += (int) Math.abs(Math.ceil(numb / div) - j - 1);
-                return value;
-            case DOWN:
-                value = old - (int) Math.abs(Math.ceil(numb / div) - (j + 1) - 1);
-                value += (int) Math.abs(Math.ceil(numb / div) - j - 1);
-                return value;
-            case LEFT:
-                mod = numb % (int) div;
-                if (mod == 0) {
-                    mod = (int) div;
-                }
-                value = old - Math.abs(mod - (i - 1) - 1);
-                value += Math.abs(mod - i - 1);
-                return value;
-            case RIGHT:
-                mod = numb % (int) div;
-                if (mod == 0) {
-                    mod = (int) div;
-                }
-                value = old - Math.abs(mod - (i + 1) - 1);
-                value += Math.abs(mod - i - 1);
-                return value;
-        }
-        return 0;
-    }
-
-    /**
-     * Konstruoi uuden pelilaudan aj siirtää tyhjää ruutua.
+     * Konstruoi uuden pelilaudan ja siirtää tyhjää ruutua.
      *
      * @param a pelilauta
      * @param j tyhjän ruudun y-koordinaatti
