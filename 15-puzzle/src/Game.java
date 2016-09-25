@@ -13,31 +13,29 @@ public class Game implements Comparable<Game> {
     private int y; //tyhjän ruudun y-koordinaatti
     private int value; //pelitilanteen arvo
     private Direction d; // suunta josta tilanteeseen on tultu
+    private int moves; //siirtomäärä, jolla kyseiseen tilanteeseen ollaan päästy
 
     /**
-     * Siirtojen lukumäärä, jolla kyseiseen pelitilanteeseen on tultu.
-     */
-    public int moves;
-
-    /**
-     * Konstruktori
-     *
+     * Konstruktori joka luo uuden peliolion annettujen parametrien perusteella.
      * @param table Peliruudukko
      * @param x Tyhjän ruudun x-koordinaatti
      * @param y Tyhjän ruudun y-koordinaatti
-     * @param value Pelitilanteen arvo (MD + moves so far)
      * @param d Suunta, johon tyhjää on siirretty viimeksi.
      * @param moves Siirtojen lukumäärä
      */
-    public Game(int[][] table, int x, int y, int value, Direction d, int moves) {
+    public Game(int[][] table, int x, int y, int moves, Direction d) {
         this.table = table;
         this.x = x;
         this.y = y;
         this.d = d;
-        this.value = value;
         this.moves = moves;
+        this.value = Logic.countManhattan(table) + moves;
     }
 
+    /**
+     *Konstruktori, joka luo uuden satunnaisen pelin aloitustilanteen.
+     * @param size pelineliön sivunpituus
+     */
     public Game(int size) {
         this.table = initTable(size);
         int[] xy = findXY(table);
@@ -48,7 +46,7 @@ public class Game implements Comparable<Game> {
         this.moves = 0;
     }
 
-    private int[] findXY(int[][] table) {
+    private int[] findXY(int[][] table) { //etsii "tyhjän" pelilaatan sijainnin 
         int[] xy = new int[2];
         int number = table.length * table[0].length;
         for (int j = 0; j < table.length; j++) {
@@ -63,7 +61,7 @@ public class Game implements Comparable<Game> {
         return xy;
     }
 
-    private int[][] initTable(int size) {
+    private int[][] initTable(int size) { // alustaa uuden pelin
         int[][] table = new int[size][size];
         int number = 1;
         for (int j = 0; j < size; j++) {
@@ -76,38 +74,38 @@ public class Game implements Comparable<Game> {
         return table;
     }
 
-    private int[][] mixTable(int[][] table) {
+    private int[][] mixTable(int[][] table) { //sekoittaa pelilaudan
         Direction[] values = Direction.values();
         Random random = new Random();
-        int j = table.length - 1;
-        int i = table[0].length - 1;
+        int y = table.length - 1;
+        int x = table[0].length - 1;
         int count = 0;
         Direction d;
         while (count < 1000) {
             d = values[random.nextInt(values.length)];
             switch (d) {
                 case UP:
-                    if (j - 1 >= 0) {
-                        table = Logic.moveBlock(table, j, i, d);
-                        j--;
+                    if (y - 1 >= 0) {
+                        table = Logic.moveBlock(table, x, y, d);
+                        y--;
                     }
                     break;
                 case DOWN:
-                    if (j + 1 < table.length) {
-                        table = Logic.moveBlock(table, j, i, d);
-                        j++;
+                    if (y + 1 < table.length) {
+                        table = Logic.moveBlock(table, x, y, d);
+                        y++;
                     }
                     break;
                 case LEFT:
-                    if (i - 1 >= 0) {
-                        table = Logic.moveBlock(table, j, i, d);
-                        i--;
+                    if (x - 1 >= 0) {
+                        table = Logic.moveBlock(table, x, y, d);
+                        x--;
                     }
                     break;
                 case RIGHT:
-                    if (i + 1 < table.length) {
-                        table = Logic.moveBlock(table, j, i, d);
-                        i++;
+                    if (x + 1 < table.length) {
+                        table = Logic.moveBlock(table, x, y, d);
+                        x++;
                     }
                     break;
             }
@@ -147,22 +145,25 @@ public class Game implements Comparable<Game> {
     public int getY() {
         return y;
     }
-    
-    public Direction getDirection() {
-        return this.d;
+
+    /**
+     *
+     * @return
+     */
+    public int getMoves() {
+        return this.moves;
     }
 
     /**
      *
-     * @param y
+     * @return
      */
-    public void setY(int y) {
-        this.y = y;
+    public Direction getDirection() {
+        return this.d;
     }
 
     @Override
     public int compareTo(Game o) {
-//        return this.Manhattan - o.Manhattan;
         return this.value - o.value;
     }
 }

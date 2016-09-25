@@ -16,47 +16,91 @@ import static org.junit.Assert.*;
  * @author luhtalam
  */
 public class LogicTest {
-
-    int[][] table;
-    int i;
-    int j;
-
-    @Before
-    public void setUp() {
-        int[][] t = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
-        this.table = t;
-        i = 3;
-        j = 3;
-    }
-
+    
+    int multiplier = 4;
+    
     @Test
-    public void testMoveBlockUpMovesBlock() {
-        int[][] t = Logic.moveBlock(table, j, i, Direction.UP);
-        for (int j = 0; j < t.length; j++) {
-            for (int i = 0; i < t.length; i++) {
-                if (this.i == i && (this.j == j || j == this.j - 1)) {
-                    continue;
-                } else {
-                    assertEquals(table[j][i], t[j][i]);
-                }
-            }
-
-        }
-        assertEquals(table[j - 1][i], t[j][i]);
-        assertEquals(table[j][i], t[j - 1][i]);
+    public void testCountManhattanWorks1() {
+        int[][] table = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        int numb = Logic.countManhattan(table);
+        assertEquals(0, numb);
     }
-
+    
     @Test
-    public void testMoveBlocDownMovesBlock() {
-        int[][] t = Logic.moveBlock(table, j, i, Direction.UP);
-        t = Logic.moveBlock(t, j-1, i, Direction.DOWN);
+    public void testCountManhattanWorks2() {
+        int[][] table = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 16, 15}};
+        int numb = Logic.countManhattan(table);
+        assertEquals(multiplier * 1, numb);
+    }
+    
+    @Test
+    public void testCountManhattanWorks3() {
+        int[][] table = {{1, 4, 2, 3}, {6, 7, 5, 8}, {10, 11, 9, 12}, {13, 15, 14, 16}};
+        int numb = Logic.countManhattan(table);
+        assertEquals(multiplier * 14 , numb);
+    }
+    
+    @Test
+    public void testCountManhattanWorks4() {
+        int[][] table = {{16, 15, 12, 7}, {8, 3, 10, 14}, {2, 11, 13, 6}, {9, 4, 5, 1}};
+        int numb = Logic.countManhattan(table);
+        assertEquals(multiplier * 46 , numb);
+    }
+    
+    @Test
+    public void testMoveBlockToUpWorks() {
+        int[][] table = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        int y = 3;
+        int x = 3;
+        table = Logic.moveBlock(table, x, y, Direction.UP);
+        int[][] t = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 16}, {13, 14, 15, 12}};
         for (int j = 0; j < t.length; j++) {
             for (int i = 0; i < t.length; i++) {
 
                 assertEquals(table[j][i], t[j][i]);
-
             }
+        }
+    }
 
+    @Test
+    public void testMoveBlocToDownWorks() {
+        int[][] table = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 16}, {13, 14, 15, 12}};
+        int y = 2;
+        int x = 3;
+        table = Logic.moveBlock(table, x, y, Direction.DOWN);
+        int[][] t = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        for (int j = 0; j < t.length; j++) {
+            for (int i = 0; i < t.length; i++) {
+                assertEquals(table[j][i], t[j][i]);
+            }
+        }
+    }
+
+    @Test
+    public void testMoveBlockToLeftWorks() {
+        int[][] table = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        int y = 3;
+        int x = 3;
+        table = Logic.moveBlock(table, x, y, Direction.LEFT);
+        int[][] t = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 16, 15}};
+        for (int j = 0; j < t.length; j++) {
+            for (int i = 0; i < t.length; i++) {
+                assertEquals(table[j][i], t[j][i]);
+            }
+        }
+    }
+    
+    @Test
+    public void testMoveBlockToRightWorks() {
+        int[][] table = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 16, 15}};
+        int y = 3;
+        int x = 2;
+        table = Logic.moveBlock(table, x, y, Direction.RIGHT);
+        int[][] t = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+        for (int j = 0; j < t.length; j++) {
+            for (int i = 0; i < t.length; i++) {
+                assertEquals(table[j][i], t[j][i]);
+            }
         }
     }
 }

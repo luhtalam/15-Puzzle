@@ -1,39 +1,42 @@
 
 import java.util.PriorityQueue;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author luhtalam
+ * Luokka 15-pelin ratkaisijaa varten.
  */
 public class Solver {
 
-    private PriorityQueue<Game> q;
+    private PriorityQueue<Game> q; //myöhemmin omatoteutus prioriteettijonolle, jossa konsturoidut pelitilanteet ovat
 
+    /**
+     * Konstruktori, joka alustaa uuden prioriteettijonon.
+     */
     public Solver() {
         this.q = new PriorityQueue<Game>();
     }
 
+    /**
+     *Metodi pelin ratkaisemiseen.
+     * @param game pelitilanne, joka ratkaistaan
+     */
     public void solve(Game game) {
-        int value = game.getValue();
-        System.out.println("Manhattan: " + value);
+        print(game.getTable());
+        System.out.println("Manhattan: " + (game.getValue() - game.getMoves()));
+        System.out.println("y: " + game.getY());
+        System.out.println("x: " + game.getX());
+        System.out.println("");
+
         q.add(game);
         int n = game.getTable().length;
-        int[][] a;
         int i = 1;
-        int numb;
         long start = System.currentTimeMillis();
         while (true) {
             game = q.poll();
 
-            if (game.getValue() - game.moves == 0) {
+            if (game.getValue() - game.getMoves() == 0) {
                 System.out.println("ratkaisu löytyi");
                 System.out.println("nostoja keosta: " + i);
-                System.out.println("siirtoja: " + game.moves);
+                System.out.println("siirtoja: " + game.getMoves());
                 System.out.println("Käytetty aika: " + (System.currentTimeMillis() - start) + " ms");
                 print(game.getTable());
                 break;
@@ -57,26 +60,26 @@ public class Solver {
         }
     }
 
-    private void addNewGame(Game game, Direction d) {
-        int[][] table = Logic.moveBlock(game.getTable(), game.getY(), game.getX(), d);
+    private void addNewGame(Game game, Direction d) { //konsturoi ja lisää uuden pelitilanteen prioriteettijonoon
+        int[][] table = Logic.moveBlock(game.getTable(), game.getX(), game.getY(), d);
         int MD = Logic.countManhattan(table);
         switch (d) {
             case UP:
-                q.add(new Game(table, game.getX(), game.getY() - 1, MD + game.moves + 1, Direction.UP, game.moves + 1));
+                q.add(new Game(table, game.getX(), game.getY() - 1, game.getMoves() + 1, Direction.UP));
                 break;
             case DOWN:
-                q.add(new Game(table, game.getX(), game.getY() + 1, MD + game.moves + 1, Direction.DOWN, game.moves + 1));
+                q.add(new Game(table, game.getX(), game.getY() + 1, game.getMoves() + 1, Direction.DOWN));
                 break;
             case LEFT:
-                q.add(new Game(table, game.getX() - 1, game.getY(), MD + game.moves + 1, Direction.LEFT, game.moves + 1));
+                q.add(new Game(table, game.getX() - 1, game.getY(), game.getMoves() + 1, Direction.LEFT));
                 break;
             case RIGHT:
-                q.add(new Game(table, game.getX() + 1, game.getY(), MD + game.moves + 1, Direction.RIGHT, game.moves + 1));
+                q.add(new Game(table, game.getX() + 1, game.getY(), game.getMoves() + 1, Direction.RIGHT));
                 break;
         }
     }
 
-    public void print(int[][] t) {
+    private void print(int[][] t) { //tulostaa pelilaudan ruudulle. Numero 16 vastaa tyhjää pelilaattaa
         for (int j = 0; j < t.length; j++) {
             for (int i = 0; i < t[0].length; i++) {
                 System.out.printf("%2d ", t[j][i]);

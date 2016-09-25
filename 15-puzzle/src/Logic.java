@@ -14,7 +14,7 @@ public class Logic {
      * @param table pelilauta, josta MD-lasketaan
      * @return pelitilanteen MD-arvo
      */
-    public static int countManhattan(int[][] table) { // Määritä raja milloin painotettu on parempi
+    public static int countManhattan(int[][] table) {
         int value = 0;
         int curr;
         int numb;
@@ -33,12 +33,13 @@ public class Logic {
                     mod = n;
                 }
                 curr += Math.abs(mod - i - 1);
-                value += 2 * curr; //optimaallisempi tulos mutta paljon hitaampi, toimii painotettua 
+                value += 4 * curr; //optimaallisempi tulos mutta hitaampi, toimii painotettua 
                 //paremmin "helpoilla" syötteillä, 2 kertominen nopeuttaa suunnattomasti
-                //ja tarjoaa optimaalisen tulosen - 1.2*optimi
+                //ja tarjoaa optimaalisen tuloksen - 1.2*optimi.
+                //Hae kokeilemalla sopiva kerroin!!
+
 //                value += curr * ((n - i) + (n - j)); //ei anna kovin optimaallista vastausta, 
                 //mutta ratkaisee nopeasti
-
             }
         }
         return value;
@@ -48,69 +49,58 @@ public class Logic {
      * Konstruoi uuden pelilaudan ja siirtää tyhjää ruutua.
      *
      * @param a pelilauta
-     * @param j tyhjän ruudun y-koordinaatti
-     * @param i tyhjän ruudun x-koordinaatti
+     * @param x
+     * @param y
      * @param d siirtosuunta
      * @return uusi pelilauta, jossa tyhjää ruutua on siirretty
      */
-    public static int[][] moveBlock(int[][] a, int j, int i, Direction d) {
+    public static int[][] moveBlock(int[][] a, int x, int y, Direction d) {
         int n = a.length;
         int[][] t = new int[n][n];
         for (int k = 0; k < n; k++) {
             t[k] = Arrays.copyOf(a[k], a[k].length);
         }
         switch (d) {
-            case UP: // lisää if-rakenne tarkistamaan voiko siirtää.
-                if (j - 1 >= 0) {
-                    moveUp(t, j, i);
-                }
+            case UP:
+                moveUp(t, x, y);
                 break;
             case RIGHT:
-                if (i + 1 < t[0].length) {
-                    moveRight(t, j, i);
-                }
+                moveRight(t, x, y);
                 break;
             case DOWN:
-                if (j + 1 < t.length) {
-                    moveDown(t, j, i);
-                }
+                moveDown(t, x, y);
                 break;
             case LEFT:
-                if (i - 1 >= 0) {
-                    moveLeft(t, j, i);
-                }
+                moveLeft(t, x, y);
                 break;
         }
         return t;
     }
 
-    private static void moveUp(int[][] t, int j, int i) {
-        int helper = t[j - 1][i];
-        t[j - 1][i] = t[j][i];
-        t[j][i] = helper;
+    private static void moveUp(int[][] t, int x, int y) {
+        int helper = t[y - 1][x];
+        t[y - 1][x] = t[y][x];
+        t[y][x] = helper;
     }
 
-    private static void moveRight(int[][] t, int j, int i) {
-
-        int helper = t[j][i + 1];
-        t[j][i + 1] = t[j][i];
-        t[j][i] = helper;
-
-    }
-
-    private static void moveDown(int[][] t, int j, int i) {
-
-        int helper = t[j + 1][i];
-        t[j + 1][i] = t[j][i];
-        t[j][i] = helper;
+    private static void moveRight(int[][] t, int x, int y) {
+        int helper = t[y][x + 1];
+        t[y][x + 1] = t[y][x];
+        t[y][x] = helper;
 
     }
 
-    private static void moveLeft(int[][] t, int j, int i) {
+    private static void moveDown(int[][] t, int x, int y) {
+        int helper = t[y + 1][x];
+        t[y + 1][x] = t[y][x];
+        t[y][x] = helper;
 
-        int helper = t[j][i - 1];
-        t[j][i - 1] = t[j][i];
-        t[j][i] = helper;
+    }
+
+    private static void moveLeft(int[][] t, int x, int y) {
+        int helper = t[y][x - 1];
+        t[y][x - 1] = t[y][x];
+        t[y][x] = helper;
 
     }
 
