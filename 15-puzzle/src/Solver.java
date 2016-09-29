@@ -4,19 +4,23 @@ import java.util.PriorityQueue;
 /**
  * Luokka 15-pelin ratkaisijaa varten.
  */
-public class Solver {
+public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee vielä tarkempaa analysointia
+                        // miksi näin!
 
-    private PriorityQueue<Game> q; //myöhemmin omatoteutus prioriteettijonolle, jossa konsturoidut pelitilanteet ovat
+//    private PriorityQueue<Game> q; //myöhemmin omatoteutus prioriteettijonolle, jossa konsturoidut pelitilanteet ovat
+    private MinHeap q;
 
     /**
      * Konstruktori, joka alustaa uuden prioriteettijonon.
      */
     public Solver() {
-        this.q = new PriorityQueue<Game>();
+//        this.q = new PriorityQueue<Game>();
+        this.q = new MinHeap();
     }
 
     /**
-     *Metodi pelin ratkaisemiseen.
+     * Metodi pelin ratkaisemiseen.
+     *
      * @param game pelitilanne, joka ratkaistaan
      */
     public void solve(Game game) {

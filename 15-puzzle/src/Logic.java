@@ -33,12 +33,12 @@ public class Logic {
                     mod = n;
                 }
                 curr += Math.abs(mod - i - 1);
-                value += 4 * curr; //optimaallisempi tulos mutta hitaampi, toimii painotettua 
+//                value += 2 * curr; //optimaallisempi tulos mutta hitaampi, toimii painotettua 
                 //paremmin "helpoilla" syötteillä, 2 kertominen nopeuttaa suunnattomasti
                 //ja tarjoaa optimaalisen tuloksen - 1.2*optimi.
                 //Hae kokeilemalla sopiva kerroin!!
 
-//                value += curr * ((n - i) + (n - j)); //ei anna kovin optimaallista vastausta, 
+                value += curr * ((n - i) + (n - j)); //ei anna kovin optimaallista vastausta, 
                 //mutta ratkaisee nopeasti
             }
         }
