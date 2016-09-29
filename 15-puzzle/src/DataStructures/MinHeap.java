@@ -2,10 +2,9 @@ package DataStructures;
 
 import entity.Game;
 
-
 /**
- *
- * @author luhtalam
+ * Minimikeko tietorakenne eri pelitilanteiden keskinäistä järjestämistä varten.
+ * Keon päällimmäisenä sen hetkisistä pelitilanteista optimaallisin.
  */
 public class MinHeap {
 
@@ -14,7 +13,7 @@ public class MinHeap {
     private int heapLength;
 
     /**
-     *
+     * Konstruktori minimikekoa varten.
      */
     public MinHeap() {
         int n = 10000;
@@ -24,8 +23,9 @@ public class MinHeap {
     }
 
     /**
+     * Metodi pelitilanteen lisäämiseksi kekoon.
      *
-     * @param game
+     * @param game Pelitilanne, joka lisätään kekoon
      */
     public void add(Game game) {
         int value = game.getValue();
@@ -42,7 +42,10 @@ public class MinHeap {
     }
 
     /**
+     * Metodi, joka palauttaa ja poistaa sillä hetkellä optimaallisimman
+     * pelitilanteen keosta.
      *
+     * @return
      */
     public Game poll() {
         Game g = heap[1];

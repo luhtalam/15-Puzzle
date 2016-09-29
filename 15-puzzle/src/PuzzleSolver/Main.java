@@ -21,8 +21,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Game g = new Game(h0, 1, 0, 0, null);
-//        Game g = new Game(4);
+//        Game g = new Game(h0, 1, 0, 0, null);
+        Game g = new Game(4);
         Solver solver = new Solver();
         solver.solve(g);
 
