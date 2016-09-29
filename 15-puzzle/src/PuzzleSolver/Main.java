@@ -1,4 +1,8 @@
+package PuzzleSolver;
 
+
+import entity.Solver;
+import entity.Game;
 import java.util.PriorityQueue;
 import java.util.Random;
 

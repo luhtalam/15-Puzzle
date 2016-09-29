@@ -1,3 +1,5 @@
+package entity;
+
 
 /**
  *Enum-luokka Direction määrittelee pelin tyhjän palan siirtosuunnan.

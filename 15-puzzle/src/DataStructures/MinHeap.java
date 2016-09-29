@@ -1,3 +1,7 @@
+package DataStructures;
+
+import entity.Game;
+
 
 /**
  *
