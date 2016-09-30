@@ -29,26 +29,27 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
      *
      * @param game pelitilanne, joka ratkaistaan
      */
-    public void solve(Game game) {
-        print(game.getTable());
-        System.out.println("Manhattan: " + (game.getValue() - game.getMoves()));
-        System.out.println("y: " + game.getY());
-        System.out.println("x: " + game.getX());
-        System.out.println("");
+    public long solve(Game game) {
+//        print(game.getTable());
+//        System.out.println("Manhattan: " + (game.getValue() - game.getMoves()));
+//        System.out.println("y: " + game.getY());
+//        System.out.println("x: " + game.getX());
+//        System.out.println("");
 
         q.add(game);
         int n = game.getTable().length;
-        int i = 1;
+        int i = 0;
         long start = System.currentTimeMillis();
         while (true) {
             game = q.poll();
-
+            i++;
             if (game.getValue() - game.getMoves() == 0) {
-                System.out.println("ratkaisu löytyi");
-                System.out.println("nostoja keosta: " + i);
-                System.out.println("siirtoja: " + game.getMoves());
+//                System.out.println("ratkaisu löytyi");
+//                System.out.println("nostoja keosta: " + i);
+//                System.out.println("siirtoja: " + game.getMoves());
                 System.out.println("Käytetty aika: " + (System.currentTimeMillis() - start) + " ms");
-                print(game.getTable());
+//                print(game.getTable());
+
                 break;
             }
 
@@ -64,10 +65,24 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
             if (game.getX() + 1 < n && game.getDirection() != Direction.LEFT) {
                 addNewGame(game, Direction.RIGHT);
             }
-
-            i++;
-
         }
+        return System.currentTimeMillis() - start;
+    }
+    
+    public void analyze(int size) {
+        int i = 0;
+        int n = 1000;
+        long raices = 0;
+        long timeSum = 0;
+        long start, end;
+        Game g;
+        while(i < n) {
+            q = new MinHeap();
+            g = new Game(size);
+            timeSum += solve(g);
+            i++;
+        }
+        System.out.println("Keskimääräinen ratkaisuaika: " + timeSum/n);
     }
 
     private void addNewGame(Game game, Direction d) { //konsturoi ja lisää uuden pelitilanteen prioriteettijonoon
