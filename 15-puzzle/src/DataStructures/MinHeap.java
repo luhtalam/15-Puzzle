@@ -8,7 +8,7 @@ import entity.Game;
  */
 public class MinHeap {
 
-    Game[] heap;
+    private Game[] heap;
     private int heapSize;
     private int heapLength;
 
