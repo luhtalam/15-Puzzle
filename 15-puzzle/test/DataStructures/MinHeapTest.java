@@ -51,8 +51,8 @@ public class MinHeapTest {
     public void testAddTwoReturnGamesInRightOrder() {
         int[][] table1 = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
         int[][] table2 = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 16, 15}};
-        Game game1 = new Game(table1, 3, 3, 0, null);
-        Game game2 = new Game(table2, 2, 3, 0, null);
+        Game game1 = new Game(table1, 3, 3, 0,null, null);
+        Game game2 = new Game(table2, 2, 3, 0,null, null);
         MinHeap heap = new MinHeap();
         heap.add(game2);
         heap.add(game1);
@@ -65,9 +65,9 @@ public class MinHeapTest {
         int[][] table1 = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
         int[][] table2 = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 16, 15}};
         int[][] table3 = {{16, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 1}};
-        Game game1 = new Game(table1, 3, 3, 0, null);
-        Game game2 = new Game(table2, 2, 3, 0, null);
-        Game game3 = new Game(table3, 0, 0, 0, null);
+        Game game1 = new Game(table1, 3, 3, 0,null, null);
+        Game game2 = new Game(table2, 2, 3, 0, null,null);
+        Game game3 = new Game(table3, 0, 0, 0, null,null);
         MinHeap heap = new MinHeap();
         heap.add(game2);
         heap.add(game1);

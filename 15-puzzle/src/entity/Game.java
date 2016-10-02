@@ -158,6 +158,10 @@ public class Game implements Comparable<Game> {
     public int getMoves() {
         return this.moves;
     }
+    
+    public Game getParent() {
+        return this.parent;
+    }
 
     /**
      *

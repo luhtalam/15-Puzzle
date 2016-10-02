@@ -8,6 +8,8 @@ import java.util.Arrays;
  * luokaksi Movement ja Counter myöhemmin.
  */
 public class Logic {
+    
+    private static int multiplier = 4;
 
     /**
      * Staattinen metodi Manhattan Distancen laskentaan. Tässä tapauksessa
@@ -35,7 +37,7 @@ public class Logic {
                     mod = n;
                 }
                 curr += Math.abs(mod - i - 1);
-                value += 4 * curr; //optimaallisempi tulos mutta hitaampi, toimii painotettua 
+                value += multiplier * curr; //optimaallisempi tulos mutta hitaampi, toimii painotettua 
                 //paremmin "helpoilla" syötteillä, 2 kertominen nopeuttaa suunnattomasti
                 //ja tarjoaa optimaalisen tuloksen - 1.2*optimi.
                 //Hae kokeilemalla sopiva kerroin!!

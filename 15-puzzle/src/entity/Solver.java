@@ -29,11 +29,11 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
      * @param game pelitilanne, joka ratkaistaan
      */
     public long solve(Game game) {
-//        print(game.getTable());
-//        System.out.println("Manhattan: " + (game.getValue() - game.getMoves()));
-//        System.out.println("y: " + game.getY());
-//        System.out.println("x: " + game.getX());
-//        System.out.println("");
+        print(game.getTable());
+        System.out.println("Manhattan: " + (game.getValue() - game.getMoves()));
+        System.out.println("y: " + game.getY());
+        System.out.println("x: " + game.getX());
+        System.out.println("");
 
         q.add(game);
         int n = game.getTable().length;
@@ -43,12 +43,11 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
             game = q.poll();
             i++;
             if (game.getValue() - game.getMoves() == 0) {
-//                System.out.println("ratkaisu löytyi");
-//                System.out.println("nostoja keosta: " + i);
-//                System.out.println("siirtoja: " + game.getMoves());
+                System.out.println("ratkaisu löytyi");
+                System.out.println("nostoja keosta: " + i);
+                System.out.println("siirtoja: " + game.getMoves());
                 System.out.println("Käytetty aika: " + (System.currentTimeMillis() - start) + " ms");
-//                print(game.getTable());
-
+                printAnswer(game);
                 break;
             }
 
@@ -93,6 +92,14 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
             i++;
         }
         System.out.println("Keskimääräinen ratkaisuaika: " + timeSum / n);
+    }
+    
+    public void printAnswer(Game game) {
+        while(game != null) {
+            print(game.getTable());
+            System.out.println("");
+            game = game.getParent();
+        }
     }
 
     private void addNewGame(Game game, Direction d) { //konsturoi ja lisää uuden pelitilanteen prioriteettijonoon
