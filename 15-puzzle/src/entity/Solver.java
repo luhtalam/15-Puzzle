@@ -1,8 +1,5 @@
 package entity;
 
-import entity.Direction;
-import entity.Logic;
-import entity.Game;
 import DataStructures.MinHeap;
 import java.util.PriorityQueue;
 

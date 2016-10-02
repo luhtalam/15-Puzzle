@@ -22,7 +22,7 @@ public class Main {
      */
     public static void main(String[] args) {
 //        Game g = new Game(h0, 1, 0, 0, null);
-        Game g = new Game(4);
+        Game g = new Game(3);
         Solver solver = new Solver();
         solver.solve(g);
 //        solver.analyze(4);
