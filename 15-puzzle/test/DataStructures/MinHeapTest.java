@@ -15,6 +15,12 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MinHeapTest {
+    
+    @Test
+    public void testEmptyHeapReturnNull() {
+        MinHeap heap = new MinHeap();
+        assertNull(heap.poll());
+    }
 
     @Test
     public void testAddOneReturnSame() {
@@ -22,6 +28,23 @@ public class MinHeapTest {
         MinHeap heap = new MinHeap();
         heap.add(g);
         assertEquals(g, heap.poll());
+    }
+    
+    @Test
+    public void testAfterAddingOneNotReturnNull() {
+        Game g = new Game(4);
+        MinHeap heap = new MinHeap();
+        heap.add(g);
+        assertNotNull(heap.poll());
+    }
+    
+    @Test
+    public void testHeapReturnNullWhenEmptyAgain() {
+        MinHeap heap = new MinHeap();
+        Game g = new Game(4);
+        heap.add(g);
+        heap.poll();
+        assertNull(heap.poll());
     }
 
     @Test

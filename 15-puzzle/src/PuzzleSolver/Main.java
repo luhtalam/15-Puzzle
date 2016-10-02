@@ -24,8 +24,8 @@ public class Main {
 //        Game g = new Game(h0, 1, 0, 0, null);
         Game g = new Game(4);
         Solver solver = new Solver();
-//        solver.solve(g);
-        solver.analyze(4);
+        solver.solve(g);
+//        solver.analyze(4);
 
     }
 }

@@ -1,0 +1,8 @@
+Viikkoraportti 4
+-------
+
+Viikolla neljä jatkoin koodin siistimistä, tein vertaisarvioinnin ja koodasin oman prioritteettijonon pelitilanteita varten. Prioriteettijonona käytän taulukon avulla toteutettua minimikekoa. Minimikeon toteutus vastaa aika pitkälti kurssilla Tietorakenteet ja algoritmit esiteltyä maksimikekoa. Toisin kuin javan valmiissa toteutuksessa toteutin omassa prioriteettijonossani vain algoritmini tarvitsemat metodit. Lopputuloksena syntyi prioriteettijono, joka toimii hieman javan valmista prioriteettijonoa nopeammin. 
+
+Ajallisesti minimikeko oli varsin nopea toteuttaa ja saada toiminta kuntoon. Kaiken kaikkiaan minimikeon toteutukseen kului aikaa noin kaksi tuntia sisältäen taustamateriaalien lukemisen. Tällä viikolla eniten aikaa kului vertausarvioinnin tekemiseen sekä dokumentointiin. Kirjalliset testaus- ja toteutusdokumentaatiot ovat vasta aluillaan, mutta niiden toteutuksen suunnittelu on jo tehty. Loin suorituskykytestausta varten oman metodin. Metodi on vasta raakaversio ja tulee tarkentumaan ensi viikolla.
+
+Ensi viikolla pääpaino on tekstikäyttöliittymän luomisessa ja suorituskykytestauksessa. Yritän myös pähkäillä heuristiikkaa hieman lisää. Tavoitteenani on saada algoritmi toimimaan suhteellisen tehokkaasti myös 24-pelin kanssa (5x5 ruudukko). Tällä hetkellä algoritmini ratkaisee noin 50-75 % kaikista 24-peleistä. 15-pelin keskimääräinen ratkaisuaika tämän hetkisellä heuristiikkafunktiolla on noin 130 ms (1000 satunnaista alkutilannetta). Näyttää siltä, että "hankalat" pelit ratkeavat nopeammin, mikäli heuristiikka funktiossa painottaa pelilaudan yläosaa, mutta keskimääräisen ratkaisuajan perusteella paras heuristiikkafunktio on kertoimella painotettu manhattan distance.

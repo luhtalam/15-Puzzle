@@ -16,6 +16,7 @@ public class Game implements Comparable<Game> {
     private int value; //pelitilanteen arvo
     private Direction d; // suunta josta tilanteeseen on tultu
     private int moves; //siirtomäärä, jolla kyseiseen tilanteeseen ollaan päästy
+    private Game parent; //peli, josta tilanteeseen on tultu. Ratkaisun tulostamista varten
 
     /**
      * Konstruktori joka luo uuden peliolion annettujen parametrien perusteella.
@@ -25,13 +26,14 @@ public class Game implements Comparable<Game> {
      * @param d Suunta, johon tyhjää on siirretty viimeksi.
      * @param moves Siirtojen lukumäärä
      */
-    public Game(int[][] table, int x, int y, int moves, Direction d) {
+    public Game(int[][] table, int x, int y, int moves, Game parent, Direction d) {
         this.table = table;
         this.x = x;
         this.y = y;
         this.d = d;
         this.moves = moves;
         this.value = Logic.countManhattan(table) + moves;
+        this.parent = parent;
     }
 
     /**
@@ -46,6 +48,7 @@ public class Game implements Comparable<Game> {
         this.d = null;
         this.value = Logic.countManhattan(this.table);
         this.moves = 0;
+        this.parent = null;
     }
 
     private int[] findXY(int[][] table) { //etsii "tyhjän" pelilaatan sijainnin 

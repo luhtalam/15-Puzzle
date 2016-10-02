@@ -48,6 +48,9 @@ public class MinHeap {
      * @return
      */
     public Game poll() {
+        if (this.heapSize == 0) {
+            return null;
+        }
         Game g = heap[1];
         heap[1] = heap[this.heapSize];
         this.heapSize--;

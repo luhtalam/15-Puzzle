@@ -1,6 +1,5 @@
 package entity;
 
-
 import entity.Direction;
 import entity.Logic;
 import entity.Game;
@@ -11,7 +10,7 @@ import java.util.PriorityQueue;
  * Luokka 15-pelin ratkaisijaa varten.
  */
 public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee vielä tarkempaa analysointia
-                        // miksi näin!
+    // miksi näin!
 
 //    private PriorityQueue<Game> q; //myöhemmin omatoteutus prioriteettijonolle, jossa konsturoidut pelitilanteet ovat
     private MinHeap q;
@@ -53,22 +52,33 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
                 break;
             }
 
-            if (game.getY() - 1 >= 0 && game.getDirection() != Direction.DOWN) {
-                addNewGame(game, Direction.UP);
-            }
-            if (game.getY() + 1 < n && game.getDirection() != Direction.UP) {
-                addNewGame(game, Direction.DOWN);
-            }
-            if (game.getX() - 1 >= 0 && game.getDirection() != Direction.RIGHT) {
-                addNewGame(game, Direction.LEFT);
-            }
-            if (game.getX() + 1 < n && game.getDirection() != Direction.LEFT) {
-                addNewGame(game, Direction.RIGHT);
-            }
+            addNewGame(game, Direction.UP);
+
+            addNewGame(game, Direction.DOWN);
+
+            addNewGame(game, Direction.LEFT);
+
+            addNewGame(game, Direction.RIGHT);
+
         }
         return System.currentTimeMillis() - start;
     }
-    
+
+    private boolean canMove(Game game, Direction d) {
+        int n = game.getTable().length;
+        switch (d) {
+            case UP:
+                return (game.getY() - 1 >= 0 && game.getDirection() != Direction.DOWN);
+            case DOWN:
+                return (game.getY() + 1 < n && game.getDirection() != Direction.UP);
+            case LEFT:
+                return (game.getX() - 1 >= 0 && game.getDirection() != Direction.RIGHT);
+            case RIGHT:
+                return (game.getX() + 1 < n && game.getDirection() != Direction.LEFT);
+        }
+        return true;
+    }
+
     public void analyze(int size) {
         int i = 0;
         int n = 1000;
@@ -76,30 +86,33 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
         long timeSum = 0;
         long start, end;
         Game g;
-        while(i < n) {
+        while (i < n) {
             q = new MinHeap();
             g = new Game(size);
             timeSum += solve(g);
             i++;
         }
-        System.out.println("Keskimääräinen ratkaisuaika: " + timeSum/n);
+        System.out.println("Keskimääräinen ratkaisuaika: " + timeSum / n);
     }
 
     private void addNewGame(Game game, Direction d) { //konsturoi ja lisää uuden pelitilanteen prioriteettijonoon
+        if (!canMove(game, d)) {
+            return;
+        }
         int[][] table = Logic.moveBlock(game.getTable(), game.getX(), game.getY(), d);
         int MD = Logic.countManhattan(table);
         switch (d) {
             case UP:
-                q.add(new Game(table, game.getX(), game.getY() - 1, game.getMoves() + 1, Direction.UP));
+                q.add(new Game(table, game.getX(), game.getY() - 1, game.getMoves() + 1, game, Direction.UP));
                 break;
             case DOWN:
-                q.add(new Game(table, game.getX(), game.getY() + 1, game.getMoves() + 1, Direction.DOWN));
+                q.add(new Game(table, game.getX(), game.getY() + 1, game.getMoves() + 1, game, Direction.DOWN));
                 break;
             case LEFT:
-                q.add(new Game(table, game.getX() - 1, game.getY(), game.getMoves() + 1, Direction.LEFT));
+                q.add(new Game(table, game.getX() - 1, game.getY(), game.getMoves() + 1, game, Direction.LEFT));
                 break;
             case RIGHT:
-                q.add(new Game(table, game.getX() + 1, game.getY(), game.getMoves() + 1, Direction.RIGHT));
+                q.add(new Game(table, game.getX() + 1, game.getY(), game.getMoves() + 1, game, Direction.RIGHT));
                 break;
         }
     }
