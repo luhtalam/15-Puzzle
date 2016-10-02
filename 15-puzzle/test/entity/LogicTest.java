@@ -6,8 +6,8 @@ package entity;
  * and open the template in the editor.
  */
 
-import entity.Direction;
-import entity.Logic;
+import Entity.Direction;
+import Entity.Logic;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

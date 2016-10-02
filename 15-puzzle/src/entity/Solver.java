@@ -1,4 +1,4 @@
-package entity;
+package Entity;
 
 import DataStructures.MinHeap;
 import java.util.PriorityQueue;

@@ -6,7 +6,7 @@
 package DataStructures;
 
 import DataStructures.MinHeap;
-import entity.Game;
+import Entity.Game;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

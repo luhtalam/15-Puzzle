@@ -1,6 +1,6 @@
 package DataStructures;
 
-import entity.Game;
+import Entity.Game;
 
 /**
  * Minimikeko tietorakenne eri pelitilanteiden keskinäistä järjestämistä varten.
