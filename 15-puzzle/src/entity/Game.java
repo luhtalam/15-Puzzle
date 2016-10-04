@@ -1,6 +1,5 @@
 package Entity;
 
-
 import java.util.Random;
 
 /**
@@ -18,8 +17,36 @@ public class Game implements Comparable<Game> {
     private int moves; //siirtomäärä, jolla kyseiseen tilanteeseen ollaan päästy
     private Game parent; //peli, josta tilanteeseen on tultu. Ratkaisun tulostamista varten
 
+    public Game(Game old, Direction d) {
+        this.table = Logic.moveBlock(old.table, old.x, old.y, d);
+        this.x = Logic.updateX(old.x, d);
+        this.y = Logic.updateY(old.y, d);
+        this.moves = old.moves + 1;
+        this.parent = old;
+        this.d = d;
+        this.value = old.value + Logic.countManhattanDistanceDifference(old.table, old.x, old.y, d) + 1;
+    }
+
+    /**
+     * Konstruktori, joka luo uuden satunnaisen pelin aloitustilanteen.
+     *
+     * @param size pelineliön sivunpituus
+     */
+    public Game(int size) {
+        this.table = initTable(size);
+        int[] xy = findXY(table);
+        this.x = xy[0];
+        this.y = xy[1];
+        this.d = null;
+        this.value = Logic.countManhattan(this.table);
+        this.moves = 0;
+        this.parent = null;
+    }
+
     /**
      * Konstruktori joka luo uuden peliolion annettujen parametrien perusteella.
+     * Konstruktori on lähinnä testausta varten.
+     *
      * @param table Peliruudukko
      * @param x Tyhjän ruudun x-koordinaatti
      * @param y Tyhjän ruudun y-koordinaatti
@@ -34,21 +61,6 @@ public class Game implements Comparable<Game> {
         this.moves = moves;
         this.value = Logic.countManhattan(table) + moves;
         this.parent = parent;
-    }
-
-    /**
-     *Konstruktori, joka luo uuden satunnaisen pelin aloitustilanteen.
-     * @param size pelineliön sivunpituus
-     */
-    public Game(int size) {
-        this.table = initTable(size);
-        int[] xy = findXY(table);
-        this.x = xy[0];
-        this.y = xy[1];
-        this.d = null;
-        this.value = Logic.countManhattan(this.table);
-        this.moves = 0;
-        this.parent = null;
     }
 
     private int[] findXY(int[][] table) { //etsii "tyhjän" pelilaatan sijainnin 
@@ -158,7 +170,7 @@ public class Game implements Comparable<Game> {
     public int getMoves() {
         return this.moves;
     }
-    
+
     public Game getParent() {
         return this.parent;
     }

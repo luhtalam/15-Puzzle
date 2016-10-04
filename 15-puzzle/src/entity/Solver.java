@@ -1,6 +1,7 @@
 package Entity;
 
 import DataStructures.MinHeap;
+import DataStructures.Stack;
 import java.util.PriorityQueue;
 
 /**
@@ -26,7 +27,7 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
      * @param game pelitilanne, joka ratkaistaan
      */
     public long solve(Game game) {
-        print(game.getTable());
+        print(game);
         System.out.println("Manhattan: " + (game.getValue() - game.getMoves()));
         System.out.println("y: " + game.getY());
         System.out.println("x: " + game.getX());
@@ -92,10 +93,15 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
     }
     
     public void printAnswer(Game game) {
+        Stack stack = new Stack();
         while(game != null) {
-            print(game.getTable());
-            System.out.println("");
+            stack.push(game);
             game = game.getParent();
+        }
+        while(!stack.empty()) {
+            game = stack.pop();
+            print(game);
+            System.out.println("");
         }
     }
 
@@ -103,25 +109,24 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
         if (!canMove(game, d)) {
             return;
         }
-        int[][] table = Logic.moveBlock(game.getTable(), game.getX(), game.getY(), d);
-        int MD = Logic.countManhattan(table);
         switch (d) {
             case UP:
-                q.add(new Game(table, game.getX(), game.getY() - 1, game.getMoves() + 1, game, Direction.UP));
+                q.add(new Game(game,d));
                 break;
             case DOWN:
-                q.add(new Game(table, game.getX(), game.getY() + 1, game.getMoves() + 1, game, Direction.DOWN));
+                q.add(new Game(game,d));
                 break;
             case LEFT:
-                q.add(new Game(table, game.getX() - 1, game.getY(), game.getMoves() + 1, game, Direction.LEFT));
+                q.add(new Game(game,d));
                 break;
             case RIGHT:
-                q.add(new Game(table, game.getX() + 1, game.getY(), game.getMoves() + 1, game, Direction.RIGHT));
+                q.add(new Game(game,d));
                 break;
         }
     }
 
-    private void print(int[][] t) { //tulostaa pelilaudan ruudulle. Numero 16 vastaa tyhjää pelilaattaa
+    private void print(Game game) { //tulostaa pelilaudan ruudulle. Numero 16 vastaa tyhjää pelilaattaa
+        int[][] t = game.getTable();
         for (int j = 0; j < t.length; j++) {
             for (int i = 0; i < t[0].length; i++) {
                 System.out.printf("%2d ", t[j][i]);

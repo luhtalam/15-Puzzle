@@ -1,6 +1,5 @@
 package Entity;
 
-
 import java.util.Arrays;
 
 /**
@@ -8,8 +7,8 @@ import java.util.Arrays;
  * luokaksi Movement ja Counter myöhemmin.
  */
 public class Logic {
-    
-    private static int multiplier = 4;
+
+    private static int multiplier = 2;
 
     /**
      * Staattinen metodi Manhattan Distancen laskentaan. Tässä tapauksessa
@@ -37,16 +36,47 @@ public class Logic {
                     mod = n;
                 }
                 curr += Math.abs(mod - i - 1);
-                value += multiplier * curr; //optimaallisempi tulos mutta hitaampi, toimii painotettua 
-                //paremmin "helpoilla" syötteillä, 2 kertominen nopeuttaa suunnattomasti
-                //ja tarjoaa optimaalisen tuloksen - 1.2*optimi.
-                //Hae kokeilemalla sopiva kerroin!!
-
-//                value += curr * ((n - i) + (n - j)); //ei anna kovin optimaallista vastausta, 
-                //mutta ratkaisee nopeasti
+                value += multiplier * curr;
             }
         }
         return value;
+    }
+
+    public static int countManhattanDistanceDifference(int[][] oldTable, int x, int y, Direction d) {
+        int n = oldTable.length;
+        int mod, numb;
+        int old = 0, nEw = 0;
+        switch (d) {
+            case UP:
+                numb = oldTable[y - 1][x];
+                old = (int) Math.abs((long) Math.ceil(numb / (double) n) - (y-1) - 1);
+                nEw = (int) Math.abs((long) Math.ceil(numb / (double) n) - y - 1);
+                break;
+            case DOWN:
+                numb = oldTable[y + 1][x];
+                old = (int) Math.abs((long) Math.ceil(numb / (double) n) - (y+1) - 1);
+                nEw = (int) Math.abs((long) Math.ceil(numb / (double) n) - y - 1);
+                break;
+            case LEFT:
+                numb = oldTable[y][x - 1];
+                mod = numb % n;
+                if (mod == 0) {
+                    mod = n;
+                }
+                old = Math.abs(mod - (x-1) - 1);
+                nEw = Math.abs(mod - x - 1);
+                break;
+            case RIGHT:
+                numb = oldTable[y][x + 1];
+                mod = numb % n;
+                if (mod == 0) {
+                    mod = n;
+                }
+                old = Math.abs(mod - (x+1) - 1);
+                nEw = Math.abs(mod - x - 1);
+                break;
+        }
+        return multiplier* (nEw - old);
     }
 
     /**
@@ -79,6 +109,24 @@ public class Logic {
                 break;
         }
         return t;
+    }
+
+    public static int updateY(int oldY, Direction d) {
+        if (d == Direction.UP) {
+            oldY--;
+        } else if (d == Direction.DOWN) {
+            oldY++;
+        }
+        return oldY;
+    }
+
+    public static int updateX(int oldX, Direction d) {
+        if (d == Direction.LEFT) {
+            oldX--;
+        } else if (d == Direction.RIGHT) {
+            oldX++;
+        }
+        return oldX;
     }
 
     private static void moveUp(int[][] t, int x, int y) {
