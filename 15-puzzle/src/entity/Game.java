@@ -53,14 +53,15 @@ public class Game implements Comparable<Game> {
      * @param d Suunta, johon tyhjää on siirretty viimeksi.
      * @param moves Siirtojen lukumäärä
      */
-    public Game(int[][] table, int x, int y, int moves, Game parent, Direction d) {
+    public Game(int[][] table) {
         this.table = table;
-        this.x = x;
-        this.y = y;
-        this.d = d;
-        this.moves = moves;
+        int[] xy = findXY(table);
+        this.x = xy[0];
+        this.y = xy[1];
+        this.d = null;
+        this.moves = 0;
         this.value = Logic.countManhattan(table) + moves;
-        this.parent = parent;
+        this.parent = null;
     }
 
     private int[] findXY(int[][] table) { //etsii "tyhjän" pelilaatan sijainnin 

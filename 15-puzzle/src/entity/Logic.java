@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public class Logic {
 
-    private static int multiplier = 2;
+    private static int multiplier = 4;
 
     /**
      * Staattinen metodi Manhattan Distancen laskentaan. Tässä tapauksessa
