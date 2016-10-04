@@ -42,6 +42,14 @@ public class Logic {
         return value;
     }
 
+    /**
+     *
+     * @param oldTable
+     * @param x
+     * @param y
+     * @param d
+     * @return
+     */
     public static int countManhattanDistanceDifference(int[][] oldTable, int x, int y, Direction d) {
         int n = oldTable.length;
         int mod, numb;
@@ -111,6 +119,12 @@ public class Logic {
         return t;
     }
 
+    /**
+     *
+     * @param oldY
+     * @param d
+     * @return
+     */
     public static int updateY(int oldY, Direction d) {
         if (d == Direction.UP) {
             oldY--;
@@ -120,6 +134,12 @@ public class Logic {
         return oldY;
     }
 
+    /**
+     *
+     * @param oldX
+     * @param d
+     * @return
+     */
     public static int updateX(int oldX, Direction d) {
         if (d == Direction.LEFT) {
             oldX--;

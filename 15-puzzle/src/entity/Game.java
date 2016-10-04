@@ -17,6 +17,11 @@ public class Game implements Comparable<Game> {
     private int moves; //siirtomäärä, jolla kyseiseen tilanteeseen ollaan päästy
     private Game parent; //peli, josta tilanteeseen on tultu. Ratkaisun tulostamista varten
 
+    /**
+     *
+     * @param old
+     * @param d
+     */
     public Game(Game old, Direction d) {
         this.table = Logic.moveBlock(old.table, old.x, old.y, d);
         this.x = Logic.updateX(old.x, d);
@@ -48,10 +53,6 @@ public class Game implements Comparable<Game> {
      * Konstruktori on lähinnä testausta varten.
      *
      * @param table Peliruudukko
-     * @param x Tyhjän ruudun x-koordinaatti
-     * @param y Tyhjän ruudun y-koordinaatti
-     * @param d Suunta, johon tyhjää on siirretty viimeksi.
-     * @param moves Siirtojen lukumäärä
      */
     public Game(int[][] table) {
         this.table = table;
@@ -131,6 +132,16 @@ public class Game implements Comparable<Game> {
         }
         return table;
     }
+    
+    public void print() {
+        int n = this.table.length;
+        for (int j = 0; j < n; j++) {
+            for (int i = 0; i < n; i++) {
+                System.out.printf("%2d ", table[j][i]);
+            }
+            System.out.println("");
+        }
+    }
 
     /**
      *
@@ -172,6 +183,10 @@ public class Game implements Comparable<Game> {
         return this.moves;
     }
 
+    /**
+     *
+     * @return
+     */
     public Game getParent() {
         return this.parent;
     }

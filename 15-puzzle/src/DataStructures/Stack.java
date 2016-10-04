@@ -2,16 +2,27 @@ package DataStructures;
 
 import Entity.Game;
 
+/**
+ *
+ * @author luhtalam
+ */
 public class Stack {
     
     private Game[] stack;
     private int stackSize;
     
+    /**
+     *
+     */
     public Stack() {
         this.stack = new Game[150];
         this.stackSize = 0;
     }
     
+    /**
+     *
+     * @param game
+     */
     public void push(Game game) {
         if (stackSize == stack.length) {
             doubleSize();
@@ -20,6 +31,10 @@ public class Stack {
         this.stackSize++;
     }
     
+    /**
+     *
+     * @return
+     */
     public Game pop() {
         if (stackSize <= 0) {
             return null;
@@ -29,12 +44,20 @@ public class Stack {
         }        
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean empty() {
         if (stackSize <= 0) {
             return true;
         } else {
             return false;
         }
+    }
+    
+    public int getSize() {
+        return this.stackSize;
     }
     
     private void doubleSize() {

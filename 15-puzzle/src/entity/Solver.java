@@ -7,8 +7,7 @@ import java.util.PriorityQueue;
 /**
  * Luokka 15-pelin ratkaisijaa varten.
  */
-public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee vielä tarkempaa analysointia
-    // miksi näin!
+public class Solver {
 
 //    private PriorityQueue<Game> q; //myöhemmin omatoteutus prioriteettijonolle, jossa konsturoidut pelitilanteet ovat
     private MinHeap q;
@@ -25,40 +24,20 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
      * Metodi pelin ratkaisemiseen.
      *
      * @param game pelitilanne, joka ratkaistaan
+     * @return
      */
-    public long solve(Game game) {
-        print(game);
-        System.out.println("Manhattan: " + (game.getValue() - game.getMoves()));
-        System.out.println("y: " + game.getY());
-        System.out.println("x: " + game.getX());
-        System.out.println("");
-
+    public Game solve(Game game) {
         q.add(game);
-        int n = game.getTable().length;
-        int i = 0;
-        long start = System.currentTimeMillis();
         while (true) {
             game = q.poll();
-            i++;
             if (game.getValue() - game.getMoves() == 0) {
-                System.out.println("ratkaisu löytyi");
-                System.out.println("nostoja keosta: " + i);
-                System.out.println("siirtoja: " + game.getMoves());
-                System.out.println("Käytetty aika: " + (System.currentTimeMillis() - start) + " ms");
-                printAnswer(game);
-                break;
+                return game;
             }
-
             addNewGame(game, Direction.UP);
-
             addNewGame(game, Direction.DOWN);
-
             addNewGame(game, Direction.LEFT);
-
             addNewGame(game, Direction.RIGHT);
-
         }
-        return System.currentTimeMillis() - start;
     }
 
     private boolean canMove(Game game, Direction d) {
@@ -76,31 +55,67 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
         return true;
     }
 
-    public void analyze(int size) {
-        int i = 0;
-        int n = 1000;
-        long raices = 0;
-        long timeSum = 0;
-        long start, end;
-        Game g;
-        while (i < n) {
-            q = new MinHeap();
-            g = new Game(size);
-            timeSum += solve(g);
-            i++;
-        }
-        System.out.println("Keskimääräinen ratkaisuaika: " + timeSum / n);
-    }
-    
+//    /**
+//     *
+//     * @param size
+//     */
+//    public void analyze(int size) {
+//        int i = 0;
+//        int n = 1000;
+//        long raices = 0;
+//        long timeSum = 0;
+//        long start, end;
+//        Game g;
+//        while (i < n) {
+//            q = new MinHeap();
+//            g = new Game(size);
+//            timeSum += solve(g);
+//            i++;
+//        }
+//        System.out.println("Keskimääräinen ratkaisuaika: " + timeSum / n);
+//    }
+    /**
+     *
+     * @param game
+     */
     public void printAnswer(Game game) {
         Stack stack = new Stack();
-        while(game != null) {
+        while (game != null) {
             stack.push(game);
             game = game.getParent();
         }
-        while(!stack.empty()) {
-            game = stack.pop();
-            print(game);
+        System.out.println("\nRatkaisussa on " + (stack.getSize() - 1) + " siirtoa. "
+                + "Ratkaisuun päästiin seuraavilla siirroilla:");
+        System.out.println("");
+        int counter = 1;
+        Game game1, game2;
+        game1 = stack.pop();
+        while (!stack.empty()) {
+            System.out.println(counter + ". siirto:\n");
+            game2 = stack.pop();
+            printMove(game1, game2);
+            game1 = game2;
+            System.out.println("");
+            counter++;
+        }
+    }
+    
+    private void printMove(Game game1, Game game2) {
+        int n = game1.getTable().length;
+        int[][] t1 = game1.getTable();
+        int[][] t2 = game2.getTable();
+        for (int j = 0; j < n; j++) {
+            for (int i = 0; i < n; i++) {
+                System.out.printf("%2d ",t1[j][i]);
+            }
+            if (j == 1) {
+                System.out.print(" -> ");
+            } else {
+                System.out.print("    ");
+            }
+            for (int i = 0; i < n; i++) {
+                System.out.printf("%2d ",t2[j][i]);
+            }
             System.out.println("");
         }
     }
@@ -111,27 +126,17 @@ public class Solver { //Oma toteutus tehokkaampi kuin javan priorityQueue. Tee v
         }
         switch (d) {
             case UP:
-                q.add(new Game(game,d));
+                q.add(new Game(game, d));
                 break;
             case DOWN:
-                q.add(new Game(game,d));
+                q.add(new Game(game, d));
                 break;
             case LEFT:
-                q.add(new Game(game,d));
+                q.add(new Game(game, d));
                 break;
             case RIGHT:
-                q.add(new Game(game,d));
+                q.add(new Game(game, d));
                 break;
-        }
-    }
-
-    private void print(Game game) { //tulostaa pelilaudan ruudulle. Numero 16 vastaa tyhjää pelilaattaa
-        int[][] t = game.getTable();
-        for (int j = 0; j < t.length; j++) {
-            for (int i = 0; i < t[0].length; i++) {
-                System.out.printf("%2d ", t[j][i]);
-            }
-            System.out.println("");
         }
     }
 }

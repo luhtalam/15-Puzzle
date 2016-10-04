@@ -5,6 +5,7 @@ import Entity.Direction;
 import Entity.Solver;
 import Entity.Game;
 import Entity.Logic;
+import UI.TextUI;
 import java.util.PriorityQueue;
 import java.util.Random;
 
@@ -24,10 +25,12 @@ public class Main {
      */
     public static void main(String[] args) {
 //        Game g = new Game(h1, 0, 0, 0,null, null);
-        Game g = new Game(3);
-        Solver solver = new Solver();
-        solver.solve(g);
-////        solver.analyze(4);
+        TextUI UI = new TextUI();
+        UI.start();
+//        Game g = new Game(3);
+//        Solver solver = new Solver();
+//        solver.solve(g);
+//////        solver.analyze(4);
 
     }
 }
