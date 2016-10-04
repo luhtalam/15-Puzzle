@@ -71,5 +71,60 @@ public class StackTest {
         stack.pop();
         assertNull(stack.pop());
     }
+    
+    @Test
+    public void testGetSizeReturnZeroWhenEmpty1() {
+        Stack stack = new Stack();
+        assertEquals(0, stack.getSize());
+    }
+    
+    @Test
+    public void testGetSizeReturnZeroWhenEmptyAgain1() {
+        Stack stack = new Stack();
+        stack.push(new Game(4));
+        stack.pop();
+        assertEquals(0, stack.getSize());
+    }
+    
+    @Test
+    public void testGetSizeReturnZeroWhenEmptyAgain2() {
+        Stack stack = new Stack();
+        stack.push(new Game(4));
+        stack.pop();
+        assertEquals(0, stack.getSize());
+        stack.push(new Game(4));
+        stack.push(new Game(4));
+        stack.pop();
+        stack.pop();
+        assertEquals(0, stack.getSize());      
+    }
+    
+    @Test
+    public void testGetSizeReturnRightWhenNotEmpty1() {
+        Stack stack = new Stack();
+        stack.push(new Game(4));
+        assertEquals(1, stack.getSize());
+    }
+    
+    @Test
+    public void testGetSizeReturnRightWhenNotEmpty2() {
+        Stack stack = new Stack();
+        stack.push(new Game(4));
+        stack.push(new Game(4));
+        assertEquals(2, stack.getSize());
+    }
+    
+    @Test
+    public void testGetSizeReturnRightWhenNotEmpty3() {
+        Stack stack = new Stack();
+        stack.push(new Game(4));
+        stack.push(new Game(4));
+        stack.pop();
+        stack.push(new Game(4));
+        stack.push(new Game(4));
+        stack.pop();
+        stack.push(new Game(4));
+        assertEquals(3, stack.getSize());
+    }
 
 }
