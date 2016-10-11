@@ -16,8 +16,6 @@ public class Solver {
      * Konstruktori, joka alustaa uuden prioriteettijonon.
      */
     public Solver() {
-//        this.q = new PriorityQueue<Game>();
-        this.q = new MinHeap();
     }
 
     /**
@@ -27,6 +25,7 @@ public class Solver {
      * @return
      */
     public Game solve(Game game) {
+        this.q = new MinHeap();
         q.add(game);
         while (true) {
             game = q.poll();
@@ -55,25 +54,41 @@ public class Solver {
         return true;
     }
 
-//    /**
-//     *
-//     * @param size
-//     */
-//    public void analyze(int size) {
-//        int i = 0;
-//        int n = 1000;
-//        long raices = 0;
-//        long timeSum = 0;
-//        long start, end;
-//        Game g;
-//        while (i < n) {
-//            q = new MinHeap();
-//            g = new Game(size);
-//            timeSum += solve(g);
-//            i++;
-//        }
-//        System.out.println("Keskimääräinen ratkaisuaika: " + timeSum / n);
-//    }
+    public void analyze(int gameSize) {
+        int n = 1000;
+        int counter = 0;
+        Game[] games = new Game[10000];
+        int[] times = new int[10000];
+        int[] moves = new int[10000];
+        int[] heapSizes = new int[10000];
+        long start, end;
+        long sum = 0;
+        long moveSum = 0;
+        long heapSize = 0;
+        Game solution;
+        while(counter < n) {
+            Game game = new Game(gameSize);
+            games[counter] = game;
+            
+            start = System.currentTimeMillis();
+            solution = solve(game);
+            end = System.currentTimeMillis();
+            
+            times[counter] = (int) (end - start);
+            sum += end-start;
+            moves[counter] = solution.getMoves();
+            moveSum += moves[counter];
+            heapSizes[counter] = q.getHeapSize();
+            heapSize += heapSizes[counter];
+            
+            counter ++;
+        }
+        System.out.println("Keskimääräinen ratkaisuaika: " + (sum/n));
+        System.out.println("Siirtoja keskimäärin: " + moveSum/n);
+        System.out.println("keskimääräinen keon koko: " + heapSize/n);
+    }
+    
+    
     /**
      *
      * @param game

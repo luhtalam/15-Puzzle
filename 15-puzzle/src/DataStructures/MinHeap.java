@@ -57,6 +57,10 @@ public class MinHeap {
         heapify(1);
         return g;
     }
+    
+    public int getHeapSize() {
+        return this.heapSize;
+    }
 
     private void heapify(int idx) {
         int r = right(idx);

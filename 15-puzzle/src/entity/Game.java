@@ -67,7 +67,7 @@ public class Game implements Comparable<Game> {
 
     private int[] findXY(int[][] table) { //etsii "tyhjän" pelilaatan sijainnin 
         int[] xy = new int[2];
-        int number = table.length * table[0].length;
+        int number = table.length * table.length;
         for (int j = 0; j < table.length; j++) {
             for (int i = 0; i < table[0].length; i++) {
                 if (table[j][i] == number) {
@@ -107,28 +107,31 @@ public class Game implements Comparable<Game> {
                     if (y - 1 >= 0) {
                         table = Logic.moveBlock(table, x, y, d);
                         y--;
+                        count++;
                     }
                     break;
                 case DOWN:
                     if (y + 1 < table.length) {
                         table = Logic.moveBlock(table, x, y, d);
                         y++;
+                        count++;
                     }
                     break;
                 case LEFT:
                     if (x - 1 >= 0) {
                         table = Logic.moveBlock(table, x, y, d);
                         x--;
+                        count++;
                     }
                     break;
                 case RIGHT:
                     if (x + 1 < table.length) {
                         table = Logic.moveBlock(table, x, y, d);
                         x++;
+                        count++;
                     }
                     break;
             }
-            count++;
         }
         return table;
     }

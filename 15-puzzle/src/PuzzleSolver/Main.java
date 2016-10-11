@@ -24,13 +24,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        Game g = new Game(h1, 0, 0, 0,null, null);
-        TextUI UI = new TextUI();
-        UI.start();
-//        Game g = new Game(3);
-//        Solver solver = new Solver();
-//        solver.solve(g);
-//////        solver.analyze(4);
-
+        Solver solver = new Solver();
+        solver.analyze(4);
     }
 }
