@@ -54,6 +54,10 @@ public class Solver {
         return true;
     }
 
+    /**
+     *
+     * @param gameSize
+     */
     public void analyze(int gameSize) {
         int n = 1000;
         int counter = 0;

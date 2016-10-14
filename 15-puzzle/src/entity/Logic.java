@@ -3,16 +3,15 @@ package Entity;
 import java.util.Arrays;
 
 /**
- * Luokka peliin liittyvää laskentaa ja siirtelyä varten. Eriytetään kadeksi
- * luokaksi Movement ja Counter myöhemmin.
+ * Luokka peliin liittyvää laskentaa ja siirtelyä varten.
  */
 public class Logic {
 
-    private static int multiplier = 4;
+    private static int multiplier = 2;
 
     /**
      * Staattinen metodi Manhattan Distancen laskentaan. Tässä tapauksessa
-     * painotettu sellainen
+     * painotettu sellainen.
      *
      * @param table pelilauta, josta MD-lasketaan
      * @return pelitilanteen MD-arvo
@@ -43,18 +42,18 @@ public class Logic {
     }
 
     /**
-     *
-     * @param oldTable
-     * @param x
-     * @param y
-     * @param d
+     *Laskee uudelle pelitilanteelle uuden Manhattan distancen optimaallisemmin.
+     * @param oldTable Vanha pelitilanne
+     * @param x tyhjän laatan x-koordinaatti
+     * @param y tyhjän laatan y-koordinaatti
+     * @param direction tyhjän laatan siirtosuunta
      * @return
      */
-    public static int countManhattanDistanceDifference(int[][] oldTable, int x, int y, Direction d) {
+    public static int countManhattanDistanceDifference(int[][] oldTable, int x, int y, Direction direction) {
         int n = oldTable.length;
         int mod, numb;
         int old = 0, nEw = 0;
-        switch (d) {
+        switch (direction) {
             case UP:
                 numb = oldTable[y - 1][x];
                 old = (int) Math.abs((long) Math.ceil(numb / (double) n) - (y-1) - 1);
@@ -91,18 +90,18 @@ public class Logic {
      * Konstruoi uuden pelilaudan ja siirtää tyhjää ruutua.
      *
      * @param a pelilauta
-     * @param x
-     * @param y
-     * @param d siirtosuunta
+     * @param x tyhjän laatan x-koordinaatti
+     * @param y tyhjän laatan y-koordinaatti
+     * @param direction siirtosuunta
      * @return uusi pelilauta, jossa tyhjää ruutua on siirretty
      */
-    public static int[][] moveBlock(int[][] a, int x, int y, Direction d) {
+    public static int[][] moveBlock(int[][] a, int x, int y, Direction direction) {
         int n = a.length;
         int[][] t = new int[n][n];
         for (int k = 0; k < n; k++) {
             t[k] = Arrays.copyOf(a[k], a[k].length);
         }
-        switch (d) {
+        switch (direction) {
             case UP:
                 moveUp(t, x, y);
                 break;
@@ -120,7 +119,7 @@ public class Logic {
     }
 
     /**
-     *
+     *Päivittää 
      * @param oldY
      * @param d
      * @return

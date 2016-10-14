@@ -18,18 +18,18 @@ public class Game implements Comparable<Game> {
     private Game parent; //peli, josta tilanteeseen on tultu. Ratkaisun tulostamista varten
 
     /**
-     *
-     * @param old
-     * @param d
+     *Konstruoi uuden pelitilanteen vanhasta pelitilanteesta.
+     * @param old Vanha pelitilanne, josta uusi konstruoidaan
+     * @param direction suunta, johon tyhjää pelilaattaa siirretään
      */
-    public Game(Game old, Direction d) {
-        this.table = Logic.moveBlock(old.table, old.x, old.y, d);
-        this.x = Logic.updateX(old.x, d);
-        this.y = Logic.updateY(old.y, d);
+    public Game(Game old, Direction direction) {
+        this.table = Logic.moveBlock(old.table, old.x, old.y, direction);
+        this.x = Logic.updateX(old.x, direction);
+        this.y = Logic.updateY(old.y, direction);
         this.moves = old.moves + 1;
         this.parent = old;
-        this.d = d;
-        this.value = old.value + Logic.countManhattanDistanceDifference(old.table, old.x, old.y, d) + 1;
+        this.d = direction;
+        this.value = old.value + Logic.countManhattanDistanceDifference(old.table, old.x, old.y, direction) + 1;
     }
 
     /**
@@ -136,6 +136,9 @@ public class Game implements Comparable<Game> {
         return table;
     }
     
+    /**
+     * Tulostaa peliruudukon näytölle.
+     */
     public void print() {
         int n = this.table.length;
         for (int j = 0; j < n; j++) {
@@ -147,56 +150,49 @@ public class Game implements Comparable<Game> {
     }
 
     /**
-     *
-     * @return
+     * @return peliruudukko
      */
     public int[][] getTable() {
         return table;
     }
 
     /**
-     *
-     * @return
+     * @return pelitilanteen arvo
      */
     public int getValue() {
         return value;
     }
 
     /**
-     *
-     * @return
+     * @return tyhjän ruudun x-koordinaatti
      */
     public int getX() {
         return x;
     }
 
     /**
-     *
-     * @return
+     * @return tyhjän ruudun y-koordinaatti
      */
     public int getY() {
         return y;
     }
 
     /**
-     *
-     * @return
+     * @return siirtojen lukumäärä, jolla tilanteeseen ollaan päädytty
      */
     public int getMoves() {
         return this.moves;
     }
 
     /**
-     *
-     * @return
+     * @return pelitilanne, josta nykyiseen päästiin
      */
     public Game getParent() {
         return this.parent;
     }
 
     /**
-     *
-     * @return
+     * @return tyhjän ruudun viimeisin siirtosuunta
      */
     public Direction getDirection() {
         return this.d;

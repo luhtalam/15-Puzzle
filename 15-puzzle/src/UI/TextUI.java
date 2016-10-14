@@ -4,16 +4,26 @@ import Entity.Solver;
 import Entity.Game;
 import java.util.Scanner;
 
+/**
+ *
+ * @author luhtalam
+ */
 public class TextUI {
 
     private Scanner scanner;
     private Solver solver;
 
+    /**
+     *
+     */
     public TextUI() {
         this.scanner = new Scanner(System.in);
         this.solver = new Solver();
     }
 
+    /**
+     *
+     */
     public void start() {
         while (true) {
             int gameSize = chooseGameSize();

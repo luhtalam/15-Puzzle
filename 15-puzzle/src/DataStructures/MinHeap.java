@@ -45,7 +45,7 @@ public class MinHeap {
      * Metodi, joka palauttaa ja poistaa sillä hetkellä optimaallisimman
      * pelitilanteen keosta.
      *
-     * @return
+     * @return keon päällimmäisenä oleva pelitilanne.
      */
     public Game poll() {
         if (this.heapSize == 0) {
@@ -58,6 +58,9 @@ public class MinHeap {
         return g;
     }
     
+    /**
+     * @return keon sen hetkinen koko
+     */
     public int getHeapSize() {
         return this.heapSize;
     }

@@ -3,8 +3,7 @@ package DataStructures;
 import Entity.Game;
 
 /**
- *
- * @author luhtalam
+ *Pino-tietorakenne pelin ratkaisuun vaadittujen siirtojen tulostamista varten.
  */
 public class Stack {
     
@@ -12,7 +11,7 @@ public class Stack {
     private int stackSize;
     
     /**
-     *
+     *Konstruktori.
      */
     public Stack() {
         this.stack = new Game[150];
@@ -20,8 +19,8 @@ public class Stack {
     }
     
     /**
-     *
-     * @param game
+     *Lisää pinon päälimmäiseksi uuden pelitilanteen.
+     * @param game lisättävä pelitilanne.
      */
     public void push(Game game) {
         if (stackSize == stack.length) {
@@ -32,8 +31,8 @@ public class Stack {
     }
     
     /**
-     *
-     * @return
+     *Poistaa pinosta päällimmäisen pelitilanteen.
+     * @return päälimmäinen pelitilanne
      */
     public Game pop() {
         if (stackSize <= 0) {
@@ -45,8 +44,8 @@ public class Stack {
     }
     
     /**
-     *
-     * @return
+     *Tarkistaa onko pino tyhjä.
+     * @return totuusarvo siitä, onko pino tyhjä vai ei.
      */
     public boolean empty() {
         if (stackSize <= 0) {
@@ -56,6 +55,9 @@ public class Stack {
         }
     }
     
+    /**
+     * @return pinon sen hetkinen koko.
+     */
     public int getSize() {
         return this.stackSize;
     }
