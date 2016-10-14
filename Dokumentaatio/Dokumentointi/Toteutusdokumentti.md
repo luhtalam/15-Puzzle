@@ -8,9 +8,22 @@ Analysoin projektin määrittelydokumentissa ratkaisualgoritmin pahimman tapauks
 
 Optimaallisimmassa tapauksessa ratkaisualgoritmi käy läpi vain ratkaisuun vaadittavat n kappaletta siirtoja. Tällöin algortimi konstruoi keskimäärin bn uutta pelitilannetta, joten tilavaativuus on bnM, jossa n on siirtojen lukumäärä, b keskimääräinen haarautumiskerroin ja M on pelitaulukon tilavaatimus. Aikavaativuudeltaa tälläinen tilanne on myös bnM, jos oletetaan, että uudet pelitilanteet voidaan konstruoida ajassa M, joka on verrannollinen pelitilanteen kokoon M. Näin olleen ratkaisualgoritmin parhaan tapauksen aika- ja tilavaativuus on luokkaa O(nM).
 
+Parannusehdotuksia ja pohdintoja
+-------
+
+Algoritmin todellinen ratkaisunopeus riippuu pitkälälti sopivan heuristiikkafunktion valinnasta. Mitä paremmin heuristiikkafunktio arvioi silloisenkin pelitilanteen "arvoa" sitä nopeammin ratkaisu löytyy. Päädyin työssäni lopulta heuristiikkafunktioon, joka laskee pelitilanteen Manhattan distancen[3] arvon, kertoo sen neljällä ja painottaa sitä tehtyjen siirtojen lukumäärällä. Kerroin neljä osoittautui sopivaksi kompromissiksi optimaallisen ratkaisun ja sen löytämiseen käytetyn ajan suhteen. Kertoimella neljä päästään noin kertoimen 1,2 päähän optimaallisimmasta ratkaisusta, mutta algoritmin laskenta-aika on satoja, joissain tapauksissa jopa tuhansia, kertoja nopeampi kuin optimaallisen/lähes optimaallisen ratkaisun löytäminen. 
+
+Mikäli algoritmia haluaisi kehittää eteenpäin, pitäisi heuristiikkafunktion rakennetta muuttaa merkittävästi. Perinteisillä heuristiikkafunktiolla, mm. Manhattan distance, joudutaan lähestulkoon aina tekemään kompromisseja optimaallisen tuloksen ja käytetyn ajan suhteen. Mikäli algoritmia haluaisi tehostaa voisi heuristiikkassa käyttää erilaisia tietokantoja, joihin erilaisia tilanteita olisi laskettu valmiiksi. Tälläisiä tietokantoja ovat mm. Walking distance[4] ja erilaiset kuvio tietokannat(pattern databases)[5]. 
+
 Lähteet
 -------
 
 [1] https://en.wikipedia.org/wiki/A*_search_algorithm#Complexity
 
 [2] https://en.wikipedia.org/wiki/Branching_factor
+
+[3] https://en.wikipedia.org/wiki/Taxicab_geometry
+
+[4] http://www.ic-net.or.jp/home/takaken/e/15pz/index.html
+
+[5]https://heuristicswiki.wikispaces.com/file/view/Searching+with+pattern+database+%28Culberson+%26+Schaeffer+1996%29.pdf/92790472/Searching%20with%20pattern%20database%20%28Culberson%20%26%20Schaeffer%201996%29.pdf
