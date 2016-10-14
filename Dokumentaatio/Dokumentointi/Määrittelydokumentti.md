@@ -7,7 +7,7 @@ epäjärjestykseen. Pelaajan tehtävänä on saada pelilaatat siirrettyä takais
 kerrallaan viereisestä ruudusta kulloinkin tyhjänä olevaan ruutuun niin, että lopussa tyhjä ruutu on laatikon oikeassa 
 alakulmassa.[1][2] 
 
-![ratkaistu peli](15-puzzle.png)
+![ratkaistu peli](Dokumentaatio/15-puzzle.png)
 
 Kaiken kaikkiaan pelilaatat voitaisiin asetella pelilaatikkoon 16! = 20 922 789 888 000 tavalla, mutta näistä yli 20 biljoonasta tavasta läheskään kaikki eivät ole pelin mahdollisia alkutilanteita. Woolssey Jonhsson ja Willian E. Story osoittivat vuonna 1879, että vain puolet kaikista mahdollisista pelilaattojen kombinaatioista on sellaisia joista peli voidaan ratkaista.[3]
 
