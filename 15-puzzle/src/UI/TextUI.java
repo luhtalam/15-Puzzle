@@ -5,8 +5,7 @@ import Entity.Game;
 import java.util.Scanner;
 
 /**
- *
- * @author luhtalam
+ *Tekstikäyttöliittymäluokka.
  */
 public class TextUI {
 
@@ -14,7 +13,7 @@ public class TextUI {
     private Solver solver;
 
     /**
-     *
+     *Konstruktori.
      */
     public TextUI() {
         this.scanner = new Scanner(System.in);
@@ -22,7 +21,7 @@ public class TextUI {
     }
 
     /**
-     *
+     *Käynnistää tekstikäyttöliittymän.
      */
     public void start() {
         while (true) {
@@ -37,7 +36,7 @@ public class TextUI {
         }
     }
 
-    private int chooseGameSize() {
+    private int chooseGameSize() { //kysyy käyttäjältä ratkaistavan pelilaudan sivunpituutta
         System.out.println("Tervetuloa N-pelin ratkojaan!");
         System.out.println("Aloita syöttämällä ratkaistavan pelin sivunpituus. Käytettävissä olevat komennot:");
         System.out.println("    3) 8-peli, ratkaistavissa erittäin nopeasti.");
@@ -62,7 +61,7 @@ public class TextUI {
         }
     }
 
-    private Game drawNewGame(int gameSize) {
+    private Game drawNewGame(int gameSize) { //arvoo uuden pelinaloitustilanteen
         System.out.println("\nValitsit " + (gameSize * gameSize - 1) + "-pelin.");
         System.out.println("Arvotaan seuraavaksi pelin aloitustilanne...");
         Game game;
@@ -97,14 +96,14 @@ public class TextUI {
         }
     }
     
-    private Game solveGame(Game game) {
+    private Game solveGame(Game game) { //ratkaisee annetus pelin
         System.out.println("\nRatkaistaan seuraava peli:\n");
         game.print();
         System.out.println("");
         return this.solver.solve(game);
     }
     
-    private void printAnswer(Game game) {
+    private void printAnswer(Game game) { //tulostaa ratkaisun
         System.out.println("Ratkaisu löytyi! Valitse jokin seuraavista toiminnoista:");
         System.out.println("    1) Tulosta löydetyn ratkaisun siirrot.");
         System.out.println("    2) Palaa päävalikkoon.");

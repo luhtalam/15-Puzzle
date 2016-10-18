@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 public class Logic {
 
-    private static int multiplier = 2;
+    private static int multiplier = 4;
 
     /**
      * Staattinen metodi Manhattan Distancen laskentaan. Tässä tapauksessa
@@ -119,30 +119,30 @@ public class Logic {
     }
 
     /**
-     *Päivittää 
-     * @param oldY
-     * @param d
-     * @return
+     *Palauttaa tyhjän laatan uuden y-koordinaatin arvon
+     * @param oldY vanha y-koordinaatti
+     * @param direction siirtosuunta
+     * @return uusi y-koordinaatti
      */
-    public static int updateY(int oldY, Direction d) {
-        if (d == Direction.UP) {
+    public static int updateY(int oldY, Direction direction) {
+        if (direction == Direction.UP) {
             oldY--;
-        } else if (d == Direction.DOWN) {
+        } else if (direction == Direction.DOWN) {
             oldY++;
         }
         return oldY;
     }
 
     /**
-     *
-     * @param oldX
-     * @param d
-     * @return
+     *Palauttaa tyhjän laatan uuden x-koordinaatin arvon.
+     * @param oldX vanha x-koordinaatti
+     * @param direction siirtosuunta
+     * @return uusi x-koordinaatti
      */
-    public static int updateX(int oldX, Direction d) {
-        if (d == Direction.LEFT) {
+    public static int updateX(int oldX, Direction direction) {
+        if (direction == Direction.LEFT) {
             oldX--;
-        } else if (d == Direction.RIGHT) {
+        } else if (direction == Direction.RIGHT) {
             oldX++;
         }
         return oldX;

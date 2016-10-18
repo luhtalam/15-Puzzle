@@ -9,11 +9,10 @@ import java.util.PriorityQueue;
  */
 public class Solver {
 
-//    private PriorityQueue<Game> q; //myöhemmin omatoteutus prioriteettijonolle, jossa konsturoidut pelitilanteet ovat
     private MinHeap q;
 
     /**
-     * Konstruktori, joka alustaa uuden prioriteettijonon.
+     * Konstruktori.
      */
     public Solver() {
     }
@@ -22,7 +21,7 @@ public class Solver {
      * Metodi pelin ratkaisemiseen.
      *
      * @param game pelitilanne, joka ratkaistaan
-     * @return
+     * @return ratkaisu peli
      */
     public Game solve(Game game) {
         this.q = new MinHeap();
@@ -55,10 +54,10 @@ public class Solver {
     }
 
     /**
-     *
-     * @param gameSize
+     *Metodi algoritmin suorituskykytestausta varten.
+     * @param gameSize analysoitavan pelin sivunpituus
      */
-    public void analyze(int gameSize) {
+    public void analyze(int gameSize) { //vielä hieman kesken
         int n = 1000;
         int counter = 0;
         Game[] games = new Game[10000];
@@ -94,8 +93,8 @@ public class Solver {
     
     
     /**
-     *
-     * @param game
+     *Tulostaa ratkaisuun vaadittavat siirrot.
+     * @param game ratkaistu peli
      */
     public void printAnswer(Game game) {
         Stack stack = new Stack();
