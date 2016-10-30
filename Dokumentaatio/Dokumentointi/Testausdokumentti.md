@@ -8,4 +8,6 @@ Suoritin ratkaisualgoritmilleni kahdenlaisia testejä: algoritmin toimintaan lii
 Suorituskykytestit
 ------
 
+Algoritmin suorituskykyä testasin sekä 3x3 että 4x4 kokoisilla pelilaatikoilla. Loin metodin, joka konstruoi ja ratkaisee 10 000 erilaista pelitilannetta. 3x3 kokoinen pelilaatikko, eli 8-peli, osoittautui erittäin nopeaksi ratkaista mistä tahansa alkutilanteesta. 8-pelin keskimääräinen ratkaisuaika oli X millisekunttia, ratkaisun löytämiseen vaadittiin noin X siirtoa ja keskimääräinen prioriteettijonon koko oli X. Koska 8-peli on erittäin nopea ratkaista, ei sen suorituskyvyn tarkastelu ole kovin mielekästä. Sen sijaan 15-pelin (4x4 laatikko) ratkaisuaikojen vaihtelu oli riittävän suurta, jotta tuloksista olisi mielekästä tehdä jonkinlaisia johtopäätöksiä. Alla olevassa kuvassa on kuvattu 100 ensimmäisen 15-pelin ratkaisuajat, siirtojen lukumäärät sekä prioriteettijonon koot. Selkeyden vuoksi tilanteista, joissa ratkaisuajat ovat samat, on siirtojen lukumääräksi ja prioriteettijonon kooksi laskettu keskiarvo. Tälläisiä tilanteita syntyi lähinnä vain niiden pelitilanteiden kohdalla, jotka ratkesivat alle 10 millisekunnissa.  
+
 ![Diagnostiikka] (Diagnostiikka.png)
