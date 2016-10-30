@@ -7,3 +7,5 @@ Suoritin ratkaisualgoritmilleni kahdenlaisia testejä: algoritmin toimintaan lii
 
 Suorituskykytestit
 ------
+
+![Diagnostiikka] (Dokumentaatio/Dokumentointi/Diagnostiikka.png)
