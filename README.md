@@ -4,4 +4,4 @@ Tavoitteena on toteuttaa mahdollisimman tehokas algoritmi 15-pelin ratkaisemisee
 
 ![Ratkaistu 15-peli] (Dokumentaatio/Dokumentointi/15-puzzle.png)
 
-[Käyttöohjeet] (Dokumentaatio/Dokumentointi/kayttoohje.md)
+[Käyttöohjeet] (15-puzzle/Dokumentaatio/Dokumentointi/kayttoohje.md)
