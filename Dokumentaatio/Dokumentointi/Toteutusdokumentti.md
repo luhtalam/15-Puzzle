@@ -1,6 +1,8 @@
 Rakenne 
 -------
 
+15-pelin ratkaisu algoritmin ydin toiminnasta vastaavat Logic, Game ja Solver -luokat. Game-luokan tehtävänä on luoda eri pelitilanteista ilmentymiä ja ylläpitää niihin liittyvää tietoa. Logic-luokka vastaa pelilaudan pelilaattojen siirtelyyn liittyvästä logiikasta sekä laskee eri pelitilanteiden arvoja. Solver-luokka vastaa varsinaisesta ratkaisumetodista sekä sisältää useita apumetodeja mm. metodin, jonka avulla ratkaisuun vaaditut siirrot voidaan tulostaa käyttäjälle. Algoritmin ydin toteutus tiivistyy seuraavaan Solver-luokan solve-metodin pseudokoodiin:
+
 ![solve-metodi] (Solve-metodi.png)
 
 Aika- ja tilavaativuudet
