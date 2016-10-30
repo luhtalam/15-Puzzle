@@ -12,4 +12,4 @@ Algoritmin suorituskykyä testasin sekä 3x3 että 4x4 kokoisilla pelilaatikoill
 
 ![Diagnostiikka] (Diagnostiikka.png)
 
-Keskimäärin 15-peli ratkeaa noin 77 millisekunnissa, löydetyssä ratkaisussa on 88 siirtoja ja keskimääräinen prioriteettijonon koko on 46635 pelitilannetta. 
+Keskimäärin 15-peli ratkeaa noin 77 millisekunnissa, löydetyssä ratkaisussa on 88 siirtoja ja keskimääräinen prioriteettijonon koko on 46635 pelitilannetta. Näyttäisi siltä, ettei minimisiirtojen lukumäärä, jolla ratkaisuun voidaan päästä, anna mitään osviittaa siitä, kuinka nopeasti algoritmi ratkaisee kulloisenkin alkutilanteen. Sen sijaan ratkaisuaika ja prioriteettijono koko kasvavat lähestulkoon toisiinsa verrannollisesti. 
