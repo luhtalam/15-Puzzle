@@ -59,7 +59,7 @@ public class Solver {
      * @param gameSize analysoitavan pelin sivunpituus
      */
     public void analyze(int gameSize) { //vielä hieman kesken
-        int n = 100;
+        int n = 1000;
         int counter = 0;
         Game[] games = new Game[10000];
         int[] times = new int[10000];
@@ -87,22 +87,22 @@ public class Solver {
 
             counter++;
         }
-        System.out.println("Times(ms):");
-        for (int i = 0; i < 100; i++) {
-            System.out.println(times[i]);
-        }
-        System.out.println("siirrot:");
-        for (int i = 0; i < 100; i++) {
-            System.out.println(moves[i]);
-        }
-        System.out.println("prioriteettijono:");
-        for (int i = 0; i < 100; i++) {
-            System.out.println(heapSizes[i]);
-        }
-//        System.out.println("");
-//        System.out.println("Keskimääräinen ratkaisuaika: " + (sum/n));
-//        System.out.println("Siirtoja keskimäärin: " + moveSum/n);
-//        System.out.println("keskimääräinen keon koko: " + heapSize/n);
+//        System.out.println("Times(ms):");
+//        for (int i = 0; i < 100; i++) {
+//            System.out.println(times[i]);
+//        }
+//        System.out.println("siirrot:");
+//        for (int i = 0; i < 100; i++) {
+//            System.out.println(moves[i]);
+//        }
+//        System.out.println("prioriteettijono:");
+//        for (int i = 0; i < 100; i++) {
+//            System.out.println(heapSizes[i]);
+//        }
+        System.out.println("");
+        System.out.println("Keskimääräinen ratkaisuaika: " + (sum/n));
+        System.out.println("Siirtoja keskimäärin: " + moveSum/n);
+        System.out.println("keskimääräinen keon koko: " + heapSize/n);
     }
 
     /**
