@@ -12,4 +12,10 @@ Algoritmin suorituskykyä testasin sekä 3x3 että 4x4 kokoisilla pelilaatikoill
 
 ![Diagnostiikka] (Diagnostiikka.png)
 
-Keskimäärin 15-peli ratkeaa noin 77 millisekunnissa, löydetyssä ratkaisussa on 88 siirtoja ja keskimääräinen prioriteettijonon koko on 46635 pelitilannetta. Näyttäisi siltä, ettei minimisiirtojen lukumäärä, jolla ratkaisuun voidaan päästä, anna mitään osviittaa siitä, kuinka nopeasti algoritmi ratkaisee kulloisenkin alkutilanteen. Sen sijaan ratkaisuaika ja prioriteettijono koko kasvavat lähestulkoon toisiinsa verrannollisesti. 
+Keskimäärin 15-peli ratkeaa noin 77 millisekunnissa, löydetyssä ratkaisussa on 88 siirtoja ja keskimääräinen prioriteettijonon koko on 46635 pelitilannetta. Näyttäisi siltä, ettei minimisiirtojen lukumäärä, jolla ratkaisuun voidaan päästä, anna mitään osviittaa siitä, kuinka nopeasti algoritmi ratkaisee kulloisenkin alkutilanteen. Sen sijaan ratkaisuaika ja prioriteettijono koko kasvavat lähestulkoon toisiinsa verrannollisesti. Tässäkin on havaittavissa vaihtelua, mitä kauemmin algoritmilla kestää ratkaisun löytämisessä. Vaihtelun voi selittää se, että joissain tapauksissa algoritmi lähtee tarkastelemaan useampaa lähes yhtä "hyvää" pelitilannetta, joista pahimmillaan mikään ei johda lopputulokseen. 
+
+Pienet optimoinnit ja kompromissit
+-------
+Kaiken kaikkiaan käyttämäni heuristiikka funktio erilaisten pelitilanteiden arvottamiseen on kompromissi ratkaisuajan ja minimisiirtojen lukumäärän suhteen. Mikäli algoritmin ratkaisuajoista haluttiin pahimmillaankin alle muutaman sekunnin pituisia, lisääntyi minimisiirtojen lukumäärä hieman. Loppujen lopuksi päädyin lopputulokseen, joka antaa löytää ratkaisun 1,3 kertaisella siirtojen lukumäärällä kuin mitä niitä minimissään vaadittaisiin. Koska optimiratkaisun siirtojen lukumäärän selvittäminen on eksponentiaalinen ongelma, kerroin 1,3 ei ole absoluuttinen, vaan antaa vain hieman osvittaa, missä suuruusluokassa liikutaan. Tähän kertoimeen päädyin testaamalla 10-20 erilaista alkutilannetta, jonka minimisiirtojen lukumäärän tiesin.
+
+
