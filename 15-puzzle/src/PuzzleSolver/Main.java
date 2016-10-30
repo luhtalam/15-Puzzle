@@ -19,9 +19,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        TextUI ui = new TextUI();
-//        ui.start();
-          Solver solver = new Solver();
-          solver.analyze(4);
+        TextUI ui = new TextUI();
+        ui.start();
+
     }
 }

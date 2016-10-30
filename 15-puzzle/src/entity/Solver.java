@@ -54,58 +54,6 @@ public class Solver {
     }
 
     /**
-     * Metodi algoritmin suorituskykytestausta varten.
-     *
-     * @param gameSize analysoitavan pelin sivunpituus
-     */
-    public void analyze(int gameSize) { //vielä hieman kesken
-        int n = 1000;
-        int counter = 0;
-        Game[] games = new Game[10000];
-        int[] times = new int[10000];
-        int[] moves = new int[10000];
-        int[] heapSizes = new int[10000];
-        long start, end;
-        long sum = 0;
-        long moveSum = 0;
-        long heapSize = 0;
-        Game solution;
-        while (counter < n) {
-            Game game = new Game(gameSize);
-            games[counter] = game;
-
-            start = System.currentTimeMillis();
-            solution = solve(game);
-            end = System.currentTimeMillis();
-
-            times[counter] = (int) (end - start);
-            sum += end - start;
-            moves[counter] = solution.getMoves();
-            moveSum += moves[counter];
-            heapSizes[counter] = q.getHeapSize();
-            heapSize += heapSizes[counter];
-
-            counter++;
-        }
-//        System.out.println("Times(ms):");
-//        for (int i = 0; i < 100; i++) {
-//            System.out.println(times[i]);
-//        }
-//        System.out.println("siirrot:");
-//        for (int i = 0; i < 100; i++) {
-//            System.out.println(moves[i]);
-//        }
-//        System.out.println("prioriteettijono:");
-//        for (int i = 0; i < 100; i++) {
-//            System.out.println(heapSizes[i]);
-//        }
-        System.out.println("");
-        System.out.println("Keskimääräinen ratkaisuaika: " + (sum/n));
-        System.out.println("Siirtoja keskimäärin: " + moveSum/n);
-        System.out.println("keskimääräinen keon koko: " + heapSize/n);
-    }
-
-    /**
      * Tulostaa ratkaisuun vaadittavat siirrot.
      *
      * @param game ratkaistu peli
@@ -118,6 +66,7 @@ public class Solver {
         }
         System.out.println("\nRatkaisussa on " + (stack.getSize() - 1) + " siirtoa. "
                 + "Ratkaisuun päästiin seuraavilla siirroilla:");
+        System.out.println("Suurin numero kuvastaa tyhjää ruutua.");
         System.out.println("");
         int counter = 1;
         Game game1, game2;
@@ -171,4 +120,56 @@ public class Solver {
                 break;
         }
     }
+
+//    /**
+//     * Metodi algoritmin suorituskykytestausta varten.
+//     *
+//     * @param gameSize analysoitavan pelin sivunpituus
+//     */
+//    public void analyze(int gameSize) { //vielä hieman kesken
+//        int n = 1000;
+//        int counter = 0;
+//        Game[] games = new Game[10000];
+//        int[] times = new int[10000];
+//        int[] moves = new int[10000];
+//        int[] heapSizes = new int[10000];
+//        long start, end;
+//        long sum = 0;
+//        long moveSum = 0;
+//        long heapSize = 0;
+//        Game solution;
+//        while (counter < n) {
+//            Game game = new Game(gameSize);
+//            games[counter] = game;
+//
+//            start = System.currentTimeMillis();
+//            solution = solve(game);
+//            end = System.currentTimeMillis();
+//
+//            times[counter] = (int) (end - start);
+//            sum += end - start;
+//            moves[counter] = solution.getMoves();
+//            moveSum += moves[counter];
+//            heapSizes[counter] = q.getHeapSize();
+//            heapSize += heapSizes[counter];
+//
+//            counter++;
+//        }
+////        System.out.println("Times(ms):");
+////        for (int i = 0; i < 100; i++) {
+////            System.out.println(times[i]);
+////        }
+////        System.out.println("siirrot:");
+////        for (int i = 0; i < 100; i++) {
+////            System.out.println(moves[i]);
+////        }
+////        System.out.println("prioriteettijono:");
+////        for (int i = 0; i < 100; i++) {
+////            System.out.println(heapSizes[i]);
+////        }
+//        System.out.println("");
+//        System.out.println("Keskimääräinen ratkaisuaika: " + (sum/n));
+//        System.out.println("Siirtoja keskimäärin: " + moveSum/n);
+//        System.out.println("keskimääräinen keon koko: " + heapSize/n);
+//    }
 }

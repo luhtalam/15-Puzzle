@@ -40,7 +40,7 @@ public class TextUI {
         System.out.println("Tervetuloa N-pelin ratkojaan!");
         System.out.println("Aloita syöttämällä ratkaistavan pelin sivunpituus. Käytettävissä olevat komennot:");
         System.out.println("    3) 8-peli, ratkaistavissa erittäin nopeasti.");
-        System.out.println("    4) Klassinen 15-peli, ratkaisuaika korkeintaan 10 sekuntti, keskimäärin 0,15 s.");
+        System.out.println("    4) Klassinen 15-peli, ratkaisuaika korkeintaan pari sekunttia, keskimäärin 0,1 s.");
         System.out.println("    x) Sulje ohjelma.");
         System.out.println("");
         System.out.print("Komento: ");
