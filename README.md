@@ -6,5 +6,5 @@ Tavoitteena on toteuttaa mahdollisimman tehokas algoritmi 15-pelin ratkaisemisee
 
 * [JavaDoc] (https://htmlpreview.github.io/?https://github.com/luhtalam/15-Puzzle/blob/master/Dokumentaatio/Dokumentointi/javadoc/index.html)
 
-* [Käyttöohjeet] (/Dokumentaatio/Dokumentointi/Kayttoohje.md)
+* [Käyttöohjeet] (Dokumentaatio/Dokumentointi/Kayttoohjeet.md)
 
