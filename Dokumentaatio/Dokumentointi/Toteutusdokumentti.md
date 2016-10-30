@@ -22,6 +22,8 @@ Algoritmin todellinen ratkaisunopeus riippuu pitkälälti sopivan heuristiikkafu
 
 Mikäli algoritmia haluaisi kehittää eteenpäin, pitäisi heuristiikkafunktion rakennetta muuttaa merkittävästi. Perinteisillä heuristiikkafunktiolla, mm. Manhattan distance, joudutaan lähestulkoon aina tekemään kompromisseja optimaallisen tuloksen ja käytetyn ajan suhteen. Mikäli algoritmia haluaisi tehostaa voisi heuristiikassa käyttää erilaisia tietokantoja, joihin erilaisia tilanteita olisi laskettu valmiiksi. Tälläisiä tietokantoja ovat mm. Walking distance[4] ja erilaiset kuvio tietokannat(pattern databases)[5]. Algoritmia voisi myös tehostaa, mikäli erilaisille pelitilanteille laskisi hajoutusarvon. Tällöin uusia pelitilanteita konstruoidessa voitaisiin tarkistaa onko kyseinen pelitilanne konstruoitu jo aikaisemmin.
 
+Käytettävyyden suhteen ohjelmaa voisi kehittää vielä niin, että käyttäjä voisi syöttää ohjelmalle haluamansa pelin alkutilanteen. Tällöin kuitenkin jokainen käyttäjän syöttämä pelitilanne tulisi tarkistaa, jotta tiedettäisiin onko kyseinen pelitilanne ratkaistavissa. Tähän aiheeseen en valitettavasti ehtinyt perehtyä enempää, joten tällä hetkellä ohjelma konstruoi itse satunnaiset pelin alkutilanteet.
+
 Lähteet
 -------
 
