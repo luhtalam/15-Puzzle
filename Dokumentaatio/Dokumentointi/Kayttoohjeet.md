@@ -1,2 +1,5 @@
-Käyttöohje
+Käyttöohjeet
+-------
+
+Pelin idea
 -------
