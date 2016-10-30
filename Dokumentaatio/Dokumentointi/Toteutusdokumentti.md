@@ -5,6 +5,10 @@ Rakenne
 
 ![solve-metodi] (Solve-metodi.png)
 
+Käytännössä algoritmi siis ratkaisee annetun pelin siten, että se nostaa prioriteettijonosta sen pelitilanteen, joka näyttää sillä hetkellä optimaallisimmalta pelitilanteen ratkeamisen kannalta, ja konstuoi uudet pelitilanteet, jotka lisätään prioriteettijonoon. Tätä toistetaan kunnes löytyy pelitilanne, jossa kaikki pelilaatat ovat oikeilla paikoillaan. Uudet pelitilanteet konstruoidaan siirtämällä tyhjää pelilaattaa kaikkiin mahdollisiin suuntiin. Keskimäärin 15-pelissä tyhjää ruutua voidaan siirtää kolmeen eri suuntaan, käytännössä näistä vain kaksi on pelin ratkeamisen kannalta oleellisia, sillä yksi suunta palauttaa peliruudukon pelitilanteeseen, josta jo aiemmin tultiin.
+
+Logic, Game, ja Solver -luokkien lisäksi ohjelmastani löytyy MinHeap ja Stack -luokat, jotka vastaavat prioriteettijonon sekä pinon toteutuksista, tekstikäyttöliittymä luokka TextUI sekä enum luokka Direction, joka määrittelee neljä siirtosuuntaa: ylös, alas, oikealle ja vasemmalle.
+
 Aika- ja tilavaativuudet
 -------
 
