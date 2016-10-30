@@ -8,4 +8,4 @@ Suoritin ratkaisualgoritmilleni kahdenlaisia testejä: algoritmin toimintaan lii
 Suorituskykytestit
 ------
 
-![Diagnostiikka] (Dokumentaatio/Dokumentointi/15-puzzle.png)
+![Diagnostiikka] (Diagnostiikka.png)
