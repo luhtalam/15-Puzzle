@@ -4,3 +4,5 @@ Tavoitteena on toteuttaa mahdollisimman tehokas algoritmi 15-pelin ratkaisemisee
 
 ![Ratkaistu 15-peli] (Dokumentaatio/Dokumentointi/15-puzzle.png)
 
+* [JavaDoc] (https://htmlpreview.github.io/?https://github.com/luhtalam/Tetris/blob/master/Dokumentaatio/Checkstyle ja JavaDoc/site/apidocs/index.html)
+
