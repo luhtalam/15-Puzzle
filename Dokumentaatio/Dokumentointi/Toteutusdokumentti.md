@@ -1,7 +1,7 @@
 Rakenne 
 -------
 
-
+![solve-metodi] (solve-metodi.png)
 
 Aika- ja tilavaativuudet
 -------
